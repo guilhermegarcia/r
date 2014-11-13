@@ -28,7 +28,9 @@ require(reshape2)
 		
 		names(effects) <- c('item', 'response', 'value')
 		
-		plot <- ggplot(data=effects, aes(x=response, y=value)) + geom_line(aes(group=factor(as.character(substitute(item))))) + theme_bw() + theme(legend.position="None")
+		plot <- ggplot(data=effects, aes(x=response, y=value)) + 
+		geom_line(aes(group=factor(as.character(substitute(item))))) + theme_bw() + 
+		theme(legend.position="None")
 		
 		return(plot)
 }
