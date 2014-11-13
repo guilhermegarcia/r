@@ -4,7 +4,8 @@
 ## (glmer() in R) and (2) the random effect included in the model. If your model 'mod1' includes an 'item' random 
 ## effect, then the arguments are <mod1,item>.
 
-## The function returns a plot that shows the different random effects (y=value, x=response).
+## The function returns a plot that shows the different random effects (y=value, x=response). Make sure to check how the
+## function actually fits the way your data (and model) are organized. This is a *template*.
 
 
 
