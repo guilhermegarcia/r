@@ -33,5 +33,5 @@ plotRand <- function(model,reffect){
 		theme(legend.position="None")
 		
 		return(plot)
-}
+		}
 }
