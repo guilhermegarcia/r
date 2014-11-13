@@ -10,7 +10,7 @@
 
 plotRand <- function(model,reffect){
 
-require(reshape2)
+	require(reshape2)
 	require(ggplot2)	
 	
 	if(class(model) != 'glmerMod'){
