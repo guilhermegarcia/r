@@ -47,7 +47,7 @@ accuracy <- function(model,type=c('binomial', 'ordinal'),data,response,value){
 	
 	return(cat("Model's accuracy is ", round(acc.ord[[2]][2]*100,2), "%", sep=""))			
 	} else {
-		return("No accuracy has been computed. Only ordinal and binomial models may be evaluated.")
+		return("No accuracy has been computed. Only ordinal and binomial models can be evaluated.")
 	}
 	}
 ```
