@@ -50,4 +50,5 @@ accuracy <- function(model,type=c('binomial', 'ordinal'),data,response,value){
 		print("No accuracy has been computed. Only ordinal and binomial (glm() and glmer()) models may be evaluated.")
 	}
 	}
-	```
+	
+```
