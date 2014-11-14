@@ -7,7 +7,7 @@ a response variable (which **needs to be a factor**, of course), and a reference
 function takes these arguments and creates a ```data.frame``` where predicted probabilities are compared to actual values. The
 assumption here is: in a binomial model with responses ```x``` and ```y```, where ```x``` is the reference level, whenever
 the predicted probability is ```>.5```, the function assumes ```x```. Now that probabilities are categorical (binary) responses,
-actual and predicted values can be compared. The final percentage comes from a simple ```xtabs```. 
+actual and predicted values can be compared. The final percentage comes from a simple ```xtabs```. Note that there's no ```stop()``` in the function, so make sure all arguments are correct.
 
 
 ```{R}
