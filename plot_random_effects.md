@@ -8,7 +8,7 @@
 ## function actually fits the way your data (and model) are organized. This is a *template*.
 
 
-
+```{R}
 plotRand <- function(model,reffect){
 
 	require(reshape2)
@@ -36,3 +36,4 @@ plotRand <- function(model,reffect){
 		return(plot)
 		}
 }
+```
