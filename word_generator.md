@@ -1,7 +1,7 @@
 
 
 
-```
+```{R}
 word = function(...){
 	
 # Nuclei in the language
