@@ -1,7 +1,7 @@
 
 
 
-
+```
 word = function(...){
 	
 # Nuclei in the language
@@ -53,3 +53,4 @@ return(unlist(words))
 # This is equivalent to a CVG.CV.CV word.
 
 word(O,VV,O,V,O,V)
+```
