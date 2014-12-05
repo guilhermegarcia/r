@@ -53,8 +53,33 @@ return(unlist(words))
 
 }
 
-# Let's generate 100 words with the following template: onset, diphthong, onset, vowel, onset, vowel.
-# This is equivalent to a CVG.CV.CV word.
+```
 
-word(O,VV,O,V,O,V)
+## Some examples
+
+Let's generate 100 words with the following shape: CV.CVC (note that syllabification is *not* part of the function).
+
+```{R}
+
+word(O,V,O,V,Cf) # where cf = final coda
+
+ [1] "cilur"   "camer"   "dosus"   "lhager"  "fomur"   "gisos"  
+ [7] "jomis"   "dudel"   "damis"   "madol"   "raquur"  "gifal"  
+ [13] "rical"   "lenus"   "ligom"   "nhonhes" "zogil"   "zedas"  
+ [19] "pefum"   "lutar"   "degar"   "gezel"   "dequim"  "nasem"  
+ [25] "pivor"   "lhedul"  "lhoquil" "lobir"   "quelhes" "rasas"  
+ [31] "najem"   "tagor"   "sanham"  "nhiqual" "tosor"   "rivos"  
+ [37] "quivor"  "quafir"  "detol"   "tuzer"   "quacam"  "lalhes" 
+ [43] "zuter"   "bocum"   "ponul"   "monhil"  "nabus"   "lelham" 
+ [49] "nulhis"  "gelhel"  "dojol"   "jevim"   "jovem"   "bicem"  
+ [55] "dutem"   "solar"   "sizil"   "rezol"   "garar"   "naros"  
+ [61] "cagil"   "puquas"  "nhonhel" "nhalol"  "zugol"   "ziges"  
+ [67] "nhatul"  "zodes"   "nacem"   "quozur"  "sebus"   "ginal"  
+ [73] "jibor"   "vubol"   "jafem"   "gunhor"  "folhor"  "golhas" 
+ [79] "caquur"  "nasol"   "lhevor"  "jenhir"  "lezus"   "quaros" 
+ [85] "gisir"   "litul"   "jonhis"  "vasus"   "tanhol"  "banus"  
+ [91] "toquor"  "lhajar"  "radol"   "pozum"   "lunhum"  "cumum"  
+ [97] "dotel"   "jiner"   "lhadir"  "tedel"  
+
+
 ```
