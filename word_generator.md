@@ -10,6 +10,17 @@ First, I define monophthongs and diphthongs in the language (```V``` and ```VV``
 
 The main objective of this function is to help you come up with (pseudo-)'random' words that follow a given template. The function merely concatenates samples from pre-defined vectors that contain segments (vowels, consoanants). It goes without saying that the output of the function will need to be verified and filtered, depending on what you are actually looking for. That being said, the idea here is to simply speed things up. Crucially, as you have total control over the function, you can create inventories that match exactly the target configuration you want to include in your experiment(s). So this would be an advantage over more user-friendly (and therefore more restricted) apps that create wugs.
 
+#### Some guidelines (given the variables defined below):
+
+```V``` stands for a single vowel
+```VV``` stands for a diphthong
+```O``` stands for a singleton onset
+```OO``` stands for a complex onset
+
+Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words.
+
+-----
+
 ```{R}
 word = function(...){
 
