@@ -1,4 +1,4 @@
-# Pseudo-random word generator
+# Word generator
 
 This script contains a single function for sampling a pre-defined number of words given some parameters. The function was originally developed for Portuguese, but it can be modified to match any other language. The function ```word()``` contains possible onsets, nuclei and codas (you can also include additional phonotactic rules, as this is a basic word generator). ```word()``` takes any number of arguments, each of which represents a segment in the word that will be generated.
 
