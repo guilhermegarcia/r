@@ -16,7 +16,7 @@ word = function(...){
 assign("V", c('a', 'e', 'i', 'o', 'u'), envir= .GlobalEnv)
 
 
-assign("VV", c('aj', 'ej', 'oj', 'uj', 'Ej', 'oj', 'aw', 'ew', 'ow', 'ew', 'Ow'), envir = .GlobalEnv)
+assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
 
 # Note the glides {w,j}
 
@@ -94,24 +94,29 @@ Let's now generate CVV.CV.CV words.
 ```{R}
 word(O,VV,O,V,O,V)
 
- [1] "tujrogu"    "nhawfera"  "rewbilhe"  "gewlega"   "cajpigi"  
- [6] "fejnefe"    "fajpapo"   "jOwmoli"   "rojcevu"   "zowgiqua" 
- [11] "lhawponhe" "tOwjuti"   "tOwpapu"   "cewzabi"   "pOwleba"  
- [16] "lhEjcute"  "dajdoje"   "cujmiqui"  "bawpudu"   "dujnova"  
- [21] "jownhadi"  "dajmopo"   "zewtoce"   "sawlane"   "pOwquise" 
- [26] "gewzino"   "jOwgina"   "lhujfosa"  "gEjmabi"   "pojpife"  
- [31] "rejnhece"  "lOwmunho"  "vojvape"   "fEjquijo"  "zojzizu"  
- [36] "quawrino"  "cojquinhu" "mejcude"   "dajrulu"   "nhajvole" 
- [41] "sojruqui"  "sawnhuju"  "lhowquodi" "zojgega"   "lhejlibe" 
- [46] "vejseti"   "quojfine"  "tOwcege"   "vawconu"   "fewnogo"  
- [51] "nEjdetu"   "tewsici"   "vejfara"   "cewculho"  "rewgiga"  
- [56] "tujgula"   "rejzuru"   "tEjjaju"   "sewpunhu"  "fujquane" 
- [61] "nhEjgole"  "fejdove"   "dojrato"   "towlhonhe" "nujpipu"  
- [66] "fEjfica"   "quewloca"  "powjelho"  "bOwsogi"   "towtose"  
- [71] "bawvulhe"  "tajnhila"  "pawdeno"   "cOwveba"   "pEjcode"  
- [76] "fojvipo"   "bEjnhoda"  "rojdoba"   "lhowluze"  "bujlhelhe"
- [81] "gOwnhelha" "jajravo"   "sewdude"   "cojdola"   "najlenhi" 
- [86] "pEjtana"   "bowjunho"  "sawnute"   "rojcisi"   "rojmenho" 
- [91] "lhewfala"  "bejjome"   "tojgudo"   "quujsiso"  "gOwgula"  
- [96] "bojlise"   "tejdibi"   "pewtifa"   "dojlhesa"  "cawnholi"
+ [1] "goucula"     "soigopa"    "nhaiquequa" "loinhafa"  
+ [5] "laucoju"     "ceifode"    "juifici"    "rOutimo"   
+ [9] "lheujuga"    "reipazi"    "jounhebu"   "suizove"   
+ [13] "counadu"    "caugavo"    "peunhazu"   "voinhova"  
+ [17] "zousanho"   "fairice"    "lainadu"    "geifido"   
+ [21] "ruinique"   "nhaunhono"  "meicanu"    "zoubanhe"  
+ [25] "gaumaja"    "loijecu"    "bOunajo"    "fuizade"   
+ [29] "nhoinhemu"  "seisisi"    "taubeva"    "joifilo"   
+ [33] "rOucoza"    "dEivipa"    "pOururi"    "duizuvo"   
+ [37] "maulhinu"   "nhuimodo"   "jOubudu"    "pEitoquu"  
+ [41] "geifeza"    "nheudiba"   "quoijopi"   "queusonhi" 
+ [45] "zoirale"    "queisebi"   "puiparu"    "loijicu"   
+ [49] "sainuquo"   "touzogu"    "peugemu"    "goubebu"   
+ [53] "joujuve"    "zaudiquu"   "tuisipa"    "moitoba"   
+ [57] "lhoivaju"   "ceisame"    "poidofo"    "lheulofu"  
+ [61] "mEibive"    "geunado"    "nhEinuto"   "zeulile"   
+ [65] "vuilhune"   "zEigepo"    "soicoma"    "veucaci"   
+ [69] "paupeje"    "queutuge"   "nEitalu"    "soivuni"   
+ [73] "voimera"    "daizoci"    "goirupo"    "soiguto"   
+ [77] "quOuquefo"  "voicezo"    "faupofi"    "faufuzi"   
+ [81] "goinhoci"   "ceucice"    "nuivuse"    "moivaru"   
+ [85] "neuselhu"   "dounenhu"   "puiquinhu"  "deiquase"  
+ [89] "lhoizege"   "nEinanhe"   "vuisuti"    "zaipinhu"  
+ [93] "teinhinhe"  "dEifono"    "nEisafo"    "quoizute"  
+ [97] "zuicise"    "quEijegu"   "boiguco"    "nhoizabi"
 ```
