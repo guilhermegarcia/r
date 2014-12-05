@@ -6,7 +6,7 @@ First, I define possible monophthongs and diphthongs in the language (```V``` an
 
 ## Objective
 
-The main objective of this function is to help you come up with random pseudo-words that follow a given template. The function merely concatenates samples from pre-defined vectors that contain segments (vowels, consoanants). It goes without saying that the output of the function will necessarily be verified and filtered, depending on what you are actually looking for. That being said, the idea here is to simply speed things up.
+The main objective of this function is to help you come up with 'random' pseudo-words (but see below) that follow a given template. The function merely concatenates samples from pre-defined vectors that contain segments (vowels, consoanants). It goes without saying that the output of the function will necessarily be verified and filtered, depending on what you are actually looking for. That being said, the idea here is to simply speed things up.
 
 ```{R}
 word = function(...){
