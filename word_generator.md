@@ -39,7 +39,7 @@ assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
 	
 ##############################################################
 
-# Now, the function per se, which basically makes use of loopings and samplings
+# Now, the function per se, which basically uses loopings and samplings
 
 args = list(...)	# creates a list with the arguments
 temp = 	list()		# empty list for storing samples of segments
