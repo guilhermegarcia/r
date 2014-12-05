@@ -29,7 +29,7 @@ accuracy <- function(model,type=c('binomial', 'ordinal'),data,response,value){
 	
 	outcome <- prop.table(xtabs(~so,new_acc))
 
-	return(cat("Model's accuracy is ", round(outcome[[2]]*100,2), "%", sep=""))
+	return(cat("This model's accuracy is ", round(outcome[[2]]*100,2), "%", sep=""))
 	} else if(type=='ordinal'){
 		
 	actual <- data[[as.character(substitute(response))]]
@@ -45,7 +45,7 @@ accuracy <- function(model,type=c('binomial', 'ordinal'),data,response,value){
 	
 	acc.ord <- data.frame(prop.table(xtabs(~match,acc)))
 	
-	return(cat("Model's accuracy is ", round(acc.ord[[2]][2]*100,2), "%", sep=""))			
+	return(cat("This model's accuracy is ", round(acc.ord[[2]][2]*100,2), "%", sep=""))			
 	} else {
 		return("No accuracy has been computed. Only ordinal and binomial models can be evaluated.")
 	}
