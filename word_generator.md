@@ -12,10 +12,10 @@ The main objective of this function is to help you come up with (pseudo-)'random
 
 #### Some guidelines (given the variables defined below):
 
-```V``` stands for a single vowel
-```VV``` stands for a diphthong
-```O``` stands for a singleton onset
-```OO``` stands for a complex onset
+```V``` stands for a single vowel  
+```VV``` stands for a diphthong  
+```O``` stands for a singleton onset  
+```OO``` stands for a complex onset  
 
 Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words.
 
