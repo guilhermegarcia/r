@@ -12,7 +12,9 @@ The main objective of this function is to help you come up with (pseudo-)'random
 
 ```{R}
 word = function(...){
-	
+
+## First, let's define the parameters we're interested in
+
 # Nuclei in the language
 
 assign("V", c('a', 'e', 'i', 'o', 'u'), envir= .GlobalEnv)
@@ -20,9 +22,7 @@ assign("V", c('a', 'e', 'i', 'o', 'u'), envir= .GlobalEnv)
 
 assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
 
-# Note the glides {w,j}
-
-# More options here
+# Add any other parameter you'd like
 
 # Onsets (singleton and complex)
 
@@ -37,7 +37,9 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
 	
+##############################################################
 
+# Now, the function per se.
 
 args = list(...)	# creates a list with the arguments
 temp = 	list()		# empty list for storing samples of segments
