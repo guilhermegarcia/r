@@ -87,7 +87,7 @@ word(O,V,O,V,Cf) # where cf = final coda
  [97] "dotel"   "jiner"   "lhadir"  "tedel"  
 ```
 
-Although the function is meant to generate random words, by definition, not all generated words will be nonce-words. You can either manually exclude real words **or** you could simply add an extra step to the function, where you'd only return words that are not in a given corpus.
+Although the function is meant to generate a sample of hypothetical words, by definition, not all generated words will be nonce-words. You can either manually exclude real words **or** you could simply add an extra step to the function, where you'd only return words that are not in a given corpus.
 
 Let's now generate CVV.CV.CV words.
 
