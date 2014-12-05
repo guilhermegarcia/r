@@ -33,11 +33,9 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 # Other possible onsets should be added
 
-# Codas (word-interal and word-final)
+# Codas (positionally neutral assumptions here)
 
-assign("C", c('n', 'm', 'l', 's', 'r', 'c', 'p', 'b', 'd'), envir = .GlobalEnv)
-
-assign("Cf", c('m', 'l', 's', 'r'), envir = .GlobalEnv)
+assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
 	
 
 
@@ -68,7 +66,7 @@ Let's generate 100 words with the following shape: CV.CVC (note that syllabifica
 
 ```{R}
 
-word(O,V,O,V,Cf) # where cf = final coda
+word(O,V,O,V,C)
 
  [1] "cilur"    "camer"   "dosus"   "lhager"  "fomur"   "gisos"  
  [7] "jomis"    "dudel"   "damis"   "madol"   "raquur"  "gifal"  
