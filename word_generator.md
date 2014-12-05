@@ -1,5 +1,7 @@
 # Word generator
 
+*Guilherme D. Garcia (McGill)*
+
 This script contains a single function for sampling a pre-defined number of words given some parameters. The function was originally developed for Portuguese, but it can be modified to match any other language. The function ```word()``` contains possible onsets, nuclei and codas (you can also include additional phonotactic rules, as this is a basic word generator). ```word()``` takes any number of arguments, each of which represents a segment in the word that will be generated.
 
 First, I define possible monophthongs and diphthongs in the language (```V``` and ```VV```, respectively), as well as onsets and codas (note that positional differences can be reflected in additional variables). This makes it easier to edit the inventories. This function has no phonotact rules in it, but you can easily add them. Finally, the number of words generated can be changed by editing the ```for``` loop, which is now set to 100.
