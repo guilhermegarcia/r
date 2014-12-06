@@ -57,7 +57,7 @@ args = list(...)	# creates a list with the arguments
 temp = 	list()		# empty list for storing samples of segments
 words = list() 		# empty list for storing random words
 
-for(j in 1:100){
+for(j in 1:100){	# this loop generates n words (here, n=100)
 for(i in 1:length(args)){
 
 	temp[[i]] = sample(args[[i]],1)
