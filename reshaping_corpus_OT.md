@@ -9,7 +9,7 @@ where I propose an interval-based approach to stress in Portuguese. Because I wa
 
 My data looked like ```A``` below, and I needed something like ```B```. In ```A```, there are four columns. Each row is a
 word in the lexicon. The first three columns tell you how many segments there are in all three intervals (see Steriade 2012)
-in the stress domain (n=3). The fourth column tells you what is the stress in the word: final = ```1```, penult = ```2``` and
+in the stress domain (n=3)——```INT1``` coincides with the right edge of the word. The fourth column tells you what is the stress in the word: final = ```1```, penult = ```2``` and
 antepenult = ```3```. The original data frame had tens of columns, so ```A``` below is already a simplified version of the data.
 The function, however, doesn't care about that: as long as your columns are in the data, that's fine.
 
@@ -55,3 +55,158 @@ Let n be an unstressed position in the stress domain.
     WSPn  Assign one violation mark to every segment in n
 ```
 
+## Steps
+
+These are (roughly) the steps the function needs to follow:
+
+Given a data frame x,
+
+1. Select all unique interval sequences in x
+2. For each sequence, calculate the proportion of final, penult and antepenult stress in x
+3. Create new columns and add the data in (2) above
+4. Create a column where all three intervals are merged, so that three columns become one
+5. Reshape the data so that the stress patterns are rows, not columns
+6. Order the data by interval sequence (i.e., input)
+7. Add columns for constraints
+8. Assign violation marks
+9. Adjust column names
+10. Print new data frame (and save a csv version in the current directory)
+
+
+## Function
+
+```{R}
+toMax = function(x){
+	
+	require(reshape2)
+	
+	ints = unique(x[,c('INT3', 'INT2', 'INT1')])
+	ints$APU = NA
+	ints$PU = NA
+	ints$U = NA
+	
+	pat <- function(x,y,z) {
+	ints <- subset(data, INT3 == x & INT2 == y & INT1 == z, select=c('word','INT3', 'INT2', 'INT1', 'stress'))
+	ints$stress = factor(ints$stress, levels=1:3)
+	props <- prop.table(xtabs(~factor(stress, levels=1:3), ints))
+	return(props)
+}
+	
+	
+	for(i in 1:nrow(ints)){
+		temp = pat(ints[i,1], ints[i,2], ints[i,3])
+		
+		ints[i,4] = temp[[3]]
+		ints[i,5] = temp[[2]]
+		ints[i,6] = temp[[1]]
+	}
+	
+	ints['Pattern'] = paste(ints$INT3, ints$INT2, ints$INT1, sep='')
+	
+	ints = subset(ints, select=c('Pattern', 'APU', 'PU', 'U'))
+	
+	ints$Pattern <- as.factor(ints$Pattern)
+
+	ints <- melt(ints, id.vars='Pattern')
+
+	ints <- ints[order(ints$Pattern),]
+	
+	rownames(ints) = NULL
+	
+
+	## Constraint violations
+	
+	ints$WSP3 = NA
+	ints$WSP2 = NA
+	ints$WSP1 = NA
+	
+	for(i in 1:nrow(ints)){
+		
+		if(ints[i,2] == 'APU' & substring(ints[i,1],1,1) == '0'){
+			ints[i,4] <- 0
+			ints[i,5] <- 0
+			ints[i,6] <- 0
+			
+			} else if(ints[i,2] == 'APU' & substring(ints[i,1],1,1) != '0') {
+			ints[i,4] <- 0
+			ints[i,5] <- substring(ints[i,1], 2,2)
+			ints[i,6] <- substring(ints[i,1], 3,3)
+		} else if(ints[i,2] == 'PU'){
+				
+			ints[i,5] <- 0
+			ints[i,4] <- substring(ints[i,1], 1,1)
+			ints[i,6] <- substring(ints[i,1], 3,3)
+		} else {
+				
+			ints[i,4] <- substring(ints[i,1], 1,1)
+			ints[i,5] <- substring(ints[i,1], 2,2)
+			ints[i,6] <- 0
+		}
+		
+	} 
+	
+	
+	# Finally, this is so we have only one input per eval
+	
+	ints$rows <- seq(1,nrow(ints))
+	
+	sequence = seq(1, 258, by = 3)
+	
+	for(i in 1:nrow(ints)){
+	
+	if(!ints[i,7] %in% sequence){
+		ints[i,1] <- NA
+	} else {
+		ints[i,1] <- ints[i,1]
+	}
+		
+	}
+	
+	ints <- subset(ints, select=c('Pattern', 'variable', 'value', 'WSP3', 'WSP2', 'WSP1'))
+	
+	names(ints) <- c('Input', 'Output', 'Frequency', 'WSP3', 'WSP2', 'WSP1')
+	
+	write.csv(ints, 'ints.csv', row.names=F, quote=F)
+	print(ints, na.print='')
+	
+}
+
+
+```
+
+
+## Sample
+
+These are the first 24 lines of the output.
+
+
+```{R}
+
+Input Output   Frequency WSP3 WSP2 WSP1
+1     011    APU 0.000000000    0    0    0
+2             PU 0.250000000    0    0    1
+3              U 0.750000000    0    1    0
+4     012    APU 0.000000000    0    0    0
+5             PU 0.300000000    0    0    2
+6              U 0.700000000    0    1    0
+7     013    APU 0.000000000    0    0    0
+8             PU 0.000000000    0    0    3
+9              U 1.000000000    0    1    0
+10    021    APU 0.000000000    0    0    0
+11            PU 0.516260163    0    0    1
+12             U 0.483739837    0    2    0
+13    022    APU 0.000000000    0    0    0
+14            PU 0.243478261    0    0    2
+15             U 0.756521739    0    2    0
+16    023    APU 0.000000000    0    0    0
+17            PU 0.000000000    0    0    3
+18             U 1.000000000    0    2    0
+19    031    APU 0.000000000    0    0    0
+20            PU 0.723977965    0    0    1
+21             U 0.276022035    0    3    0
+22    032    APU 0.000000000    0    0    0
+23            PU 0.231192661    0    0    2
+24             U 0.768807339    0    3    0
+
+
+```
