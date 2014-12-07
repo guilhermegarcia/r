@@ -5,6 +5,9 @@ include proportions, constraints, and assign violation marks. I used this for my
 where I propose an interval-based approach to stress in Portuguese. Because I wanted to map my analysis into a MaxEnt grammar
 (Hayes & Wilson 2008), I needed the data to be in a specific format (see below).
 
+I obviously don't assume you need a function that does exactly this, but you can definitely adapt this function. The idea is
+to show how I did it. Hopefully, this will be helpful if you want to do something similar (or a sub/superset of what I did).
+
 ## Summary: from A to B
 
 My data looked like ```A``` below, and I needed something like ```B```. In ```A```, there are four columns. Each row is a
@@ -177,36 +180,37 @@ toMax = function(x){
 
 ## Sample
 
-These are the first 24 lines of the output.
+These are the first 24 lines of the output. Note that ```WSP3``` is never violated here, since the interval sequences in this 
+sample correspond to disyllables.
 
 
 ```{R}
 
-Input Output   Frequency WSP3 WSP2 WSP1
-1     011    APU 0.000000000    0    0    0
-2             PU 0.250000000    0    0    1
-3              U 0.750000000    0    1    0
-4     012    APU 0.000000000    0    0    0
-5             PU 0.300000000    0    0    2
-6              U 0.700000000    0    1    0
-7     013    APU 0.000000000    0    0    0
-8             PU 0.000000000    0    0    3
-9              U 1.000000000    0    1    0
-10    021    APU 0.000000000    0    0    0
-11            PU 0.516260163    0    0    1
-12             U 0.483739837    0    2    0
-13    022    APU 0.000000000    0    0    0
-14            PU 0.243478261    0    0    2
-15             U 0.756521739    0    2    0
-16    023    APU 0.000000000    0    0    0
-17            PU 0.000000000    0    0    3
-18             U 1.000000000    0    2    0
-19    031    APU 0.000000000    0    0    0
-20            PU 0.723977965    0    0    1
-21             U 0.276022035    0    3    0
-22    032    APU 0.000000000    0    0    0
-23            PU 0.231192661    0    0    2
-24             U 0.768807339    0    3    0
-
+      Input  Output   	Frequency      WSP3 WSP2 WSP1
+1     011    APU 	0.000000000    0    0    0
+2             PU 	0.250000000    0    0    1
+3              U 	0.750000000    0    1    0
+4     012    APU 	0.000000000    0    0    0
+5             PU 	0.300000000    0    0    2
+6              U 	0.700000000    0    1    0
+7     013    APU  	0.000000000    0    0    0
+8             PU 	0.000000000    0    0    3
+9              U 	1.000000000    0    1    0
+10    021    APU 	0.000000000    0    0    0
+11            PU 	0.516260163    0    0    1
+12             U 	0.483739837    0    2    0
+13    022    APU 	0.000000000    0    0    0
+14            PU 	0.243478261    0    0    2
+15             U 	0.756521739    0    2    0
+16    023    APU 	0.000000000    0    0    0
+17            PU 	0.000000000    0    0    3
+18             U 	1.000000000    0    2    0
+19    031    APU 	0.000000000    0    0    0
+20            PU 	0.723977965    0    0    1
+21             U 	0.276022035    0    3    0
+22    032    APU 	0.000000000    0    0    0
+23            PU 	0.231192661    0    0    2
+24             U 	0.768807339    0    3    0
+...
 
 ```
