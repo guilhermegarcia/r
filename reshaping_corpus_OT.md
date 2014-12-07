@@ -89,7 +89,7 @@ toMax = function(x){
 	ints$U = NA
 	
 	pat <- function(x,y,z) {
-	ints <- subset(data, INT3 == x & INT2 == y & INT1 == z, select=c('word','INT3', 'INT2', 'INT1', 'stress'))
+	ints <- subset(data, INT3 == x & INT2 == y & INT1 == z, select=c('INT3', 'INT2', 'INT1', 'stress'))
 	ints$stress = factor(ints$stress, levels=1:3)
 	props <- prop.table(xtabs(~factor(stress, levels=1:3), ints))
 	return(props)
