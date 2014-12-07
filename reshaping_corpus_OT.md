@@ -9,7 +9,7 @@ where I propose an interval-based approach to stress in Portuguese. Because I wa
 
 My data looked like ```A``` below, and I needed something like ```B```. In ```A```, there are four columns. Each row is a
 word in the lexicon. The first three columns tell you how many segments there are in all three intervals (see Steriade 2012)
-in the stress domain (n=3)——```INT1``` coincides with the right edge of the word. The fourth column tells you what is the stress in the word: final = ```1```, penult = ```2``` and
+in the stress domain (n=3)—```INT1``` coincides with the right edge of the word. The fourth column tells you what is the stress in the word: final = ```1```, penult = ```2``` and
 antepenult = ```3```. The original data frame had tens of columns, so ```A``` below is already a simplified version of the data.
 The function, however, doesn't care about that: as long as your columns are in the data, that's fine.
 
