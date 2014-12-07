@@ -6,7 +6,7 @@ where I propose an interval-based approach to stress in Portuguese. Because I wa
 (Hayes & Wilson 2008), I needed the data to be in a specific format (see below).
 
 I obviously don't assume you need a function that does exactly this, but you can definitely adapt this function. The idea is
-to show how I did it. Hopefully, this will be helpful if you want to do something similar (or a sub/superset of what I did).
+to show you how I did it. Hopefully, this will be helpful if you want to do something similar (or a sub/superset of what I did).
 
 ## Summary: from A to B
 
