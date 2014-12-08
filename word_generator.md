@@ -59,7 +59,7 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'sz', 'ç[bcdefghijklmnopqrstvxz]', '^ç')
+out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'sz', 'ç[ei]', '^ç')
 
 # Codas (positionally neutral assumptions here)
 
