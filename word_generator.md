@@ -2,6 +2,8 @@
 
 *Guilherme D. Garcia (McGill)*
 
+[Latest update: Dec 8th 2014]: now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed.
+
 This script contains a single function for sampling a pre-defined number of words given some parameters—in that sense, the function itself doesn't care which language you're working with. The function was originally developed for Portuguese, but it can be modified to match any other language. The function ```word()``` contains possible onsets, nuclei and codas (you can also include additional phonotactic rules, as this is a basic word generator). ```word()``` takes any number of arguments, each of which represents a segment in the word that will be generated.
 
 First, I define monophthongs and diphthongs in the language (```V``` and ```VV```, respectively), as well as onsets and codas (note that positional differences can be reflected in additional variables). This makes it easier to edit the inventories. This function has no phonotact rules in it, but you can easily add them. Finally, the number of words generated can be changed by editing the ```for``` loop, which is now set to 100.
@@ -18,7 +20,7 @@ The main objective of this function is to help you come up with (pseudo-)'random
 ```VV``` stands for a diphthong  
 ```C``` stands for a coda consonant  
 
-Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words.
+Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences, and only words that do **not** contain such sequences are returned. On average (1000 simulations for a CV.CV.CV word), about 30% of the words generated will include these sequences, given the pseudo-random sampling. For that reason, 150 iterations should be more than ok if you want approx. 100 words.
 
 -----
 
@@ -39,36 +41,51 @@ assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou')
 # Onsets (singleton and complex)
 
 
-assign("O", c('b', 'c', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
+assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
 
 assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 'vr'), envir = .GlobalEnv)
 
 # Other possible onsets should be added
 
+# Sequences not allowed (a vector with sequences you don't want)
+
+out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'sz', 'ç[bcdefghijklmnopqrstuvxz]')
+
 # Codas (positionally neutral assumptions here)
 
 assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
-	
+
 ##############################################################
 
 # Now, the function per se, which basically uses loopings and samplings
 
-args = list(...)	# creates a list with the arguments
-temp = 	list()		# empty list for storing samples of segments
-words = list() 		# empty list for storing random words
+args = list(...)    # creates a list with the arguments
+temp =  list()      # empty list for storing samples of segments
+words = list()      # empty list for storing random words
 
-for(j in 1:100){	# this loop generates n words (here, n=100)
+for(j in 1:150){    # this loop generates n words (here, n=100)
 for(i in 1:length(args)){
 
-	temp[[i]] = sample(args[[i]],1)
-	}
+    temp[[i]] = sample(args[[i]],1)
+    }
 
 word = paste(temp, sep = '', collapse = '')
 
 words[j] = c(word)
 
 }
-return(unlist(words))
+
+badWords = c()
+
+for(i in 1:length(out)){
+	badWords[[length(badWords)+1]] <- words[grep(out[i],words)]
+}
+
+badWords = unlist(badWords)
+
+finalList = words[!words %in% badWords]
+
+return(unlist(finalList))
 
 }
 
@@ -82,23 +99,26 @@ Let's generate 100 words with the following shape: CV.CVC (note that syllabifica
 
 word(O,V,O,V,C)
 
- [1] "cilur"    "camer"   "dosus"   "lhager"  "fomur"   "gisos"  
- [7] "jomis"    "dudel"   "damis"   "madol"   "raquur"  "gifal"  
- [13] "rical"   "lenus"   "ligom"   "nhonhes" "zogil"   "zedas"  
- [19] "pefum"   "lutar"   "degar"   "gezel"   "dequim"  "nasem"  
- [25] "pivor"   "lhedul"  "lhoquil" "lobir"   "quelhes" "rasas"  
- [31] "najem"   "tagor"   "sanham"  "nhiqual" "tosor"   "rivos"  
- [37] "quivor"  "quafir"  "detol"   "tuzer"   "quacam"  "lalhes" 
- [43] "zuter"   "bocum"   "ponul"   "monhil"  "nabus"   "lelham" 
- [49] "nulhis"  "gelhel"  "dojol"   "jevim"   "jovem"   "bicem"  
- [55] "dutem"   "solar"   "sizil"   "rezol"   "garar"   "naros"  
- [61] "cagil"   "puquas"  "nhonhel" "nhalol"  "zugol"   "ziges"  
- [67] "nhatul"  "zodes"   "nacem"   "quozur"  "sebus"   "ginal"  
- [73] "jibor"   "vubol"   "jafem"   "gunhor"  "folhor"  "golhas" 
- [79] "caquur"  "nasol"   "lhevor"  "jenhir"  "lezus"   "quaros" 
- [85] "gisir"   "litul"   "jonhis"  "vasus"   "tanhol"  "banus"  
- [91] "toquor"  "lhajar"  "radol"   "pozum"   "lunhum"  "cumum"  
- [97] "dotel"   "jiner"   "lhadir"  "tedel"  
+  [1] "gomun"  "juras"  "redus"  "galhen" "fefar"  "ninhos"
+  [7] "tavem"  "tazom"  "nevun"  "rones"  "vaçam"  "pebar" 
+ [13] "cibir"  "jaral"  "jufil"  "larul"  "cenham" "galhos"
+ [19] "bapon"  "suzon"  "vacur"  "dusan"  "fajar"  "buzol" 
+ [25] "mobum"  "bajul"  "tibin"  "janhem" "fujen"  "nulhim"
+ [31] "cigir"  "macim"  "salon"  "finam"  "dejul"  "zesar" 
+ [37] "jusil"  "fujer"  "punel"  "vinhul" "zujem"  "rijis" 
+ [43] "fofem"  "gecos"  "siges"  "dupor"  "ginhin" "cijun" 
+ [49] "cipis"  "luvon"  "cafim"  "cemus"  "sirir"  "pabes" 
+ [55] "mujir"  "filhim" "tiguil" "lenas"  "nuquar" "gises" 
+ [61] "lupos"  "pagor"  "silun"  "nural"  "cabis"  "pulam" 
+ [67] "zeguan" "putul"  "mipem"  "zamen"  "difar"  "canhis"
+ [73] "tedon"  "jalil"  "dulas"  "vuvun"  "zinom"  "gasal" 
+ [79] "salhes" "nobus"  "satun"  "tobul"  "muquim" "voner" 
+ [85] "gacor"  "vomur"  "lecum"  "bonhir" "givis"  "jenas" 
+ [91] "tufir"  "sanam"  "nibar"  "zorin"  "livar"  "tolur" 
+ [97] "ziguas" "daran"  "migen"  "sulhel" "zitus"  "bujon" 
+[103] "dinam" 
+
+
 ```
 
 Although the function is meant to generate a sample of hypothetical words, by definition, not all generated words will be nonce-words. You can either manually exclude real words **or** you could simply add an extra step to the function, where you'd only return words that are not in a given corpus.
@@ -108,29 +128,35 @@ Let's now generate CVV.CV.CV words.
 ```{R}
 word(O,VV,O,V,O,V)
 
- [1] "goucula"     "soigopa"    "nhaiquequa" "loinhafa"  
- [5] "laucoju"     "ceifode"    "juifici"    "rOutimo"   
- [9] "lheujuga"    "reipazi"    "jounhebu"   "suizove"   
- [13] "counadu"    "caugavo"    "peunhazu"   "voinhova"  
- [17] "zousanho"   "fairice"    "lainadu"    "geifido"   
- [21] "ruinique"   "nhaunhono"  "meicanu"    "zoubanhe"  
- [25] "gaumaja"    "loijecu"    "bOunajo"    "fuizade"   
- [29] "nhoinhemu"  "seisisi"    "taubeva"    "joifilo"   
- [33] "rOucoza"    "dEivipa"    "pOururi"    "duizuvo"   
- [37] "maulhinu"   "nhuimodo"   "jOubudu"    "pEitoquu"  
- [41] "geifeza"    "nheudiba"   "quoijopi"   "queusonhi" 
- [45] "zoirale"    "queisebi"   "puiparu"    "loijicu"   
- [49] "sainuquo"   "touzogu"    "peugemu"    "goubebu"   
- [53] "joujuve"    "zaudiquu"   "tuisipa"    "moitoba"   
- [57] "lhoivaju"   "ceisame"    "poidofo"    "lheulofu"  
- [61] "mEibive"    "geunado"    "nhEinuto"   "zeulile"   
- [65] "vuilhune"   "zEigepo"    "soicoma"    "veucaci"   
- [69] "paupeje"    "queutuge"   "nEitalu"    "soivuni"   
- [73] "voimera"    "daizoci"    "goirupo"    "soiguto"   
- [77] "quOuquefo"  "voicezo"    "faupofi"    "faufuzi"   
- [81] "goinhoci"   "ceucice"    "nuivuse"    "moivaru"   
- [85] "neuselhu"   "dounenhu"   "puiquinhu"  "deiquase"  
- [89] "lhoizege"   "nEinanhe"   "vuisuti"    "zaipinhu"  
- [93] "teinhinhe"  "dEifono"    "nEisafo"    "quoizute"  
- [97] "zuicise"    "quEijegu"   "boiguco"    "nhoizabi"
+  [1] "toipavo"    "cuituzu"    "mOuguiri"   "tEigaba"   
+  [5] "lainhugui"  "voupace"    "voidade"    "jouquise"  
+  [9] "baifeca"    "nuigale"    "boiviti"    "nuimosi"   
+ [13] "sOufusi"    "tuideno"    "vaujege"    "puizire"   
+ [17] "loituca"    "meuvalhu"   "naurigua"   "çOuguane"  
+ [21] "doifuzi"    "mEibaça"    "vaunhefe"   "guaiseji"  
+ [25] "reujugo"    "paibibe"    "zEinoci"    "jeizosa"   
+ [29] "deuduni"    "ceilhubu"   "jeilhora"   "jeusosu"   
+ [33] "mEimoju"    "tEiroce"    "gEipunhi"   "reuquimi"  
+ [37] "vaulhedu"   "loinuci"    "bouviva"    "teudote"   
+ [41] "suizagi"    "ceuziru"    "zaunicu"    "voiguaba"  
+ [45] "mOurile"    "jeumibe"    "moinhoju"   "reiquelhe" 
+ [49] "gaizogui"   "doivaga"    "saibiga"    "doufiti"   
+ [53] "veuropa"    "zeunodi"    "zEinhadu"   "fEiquimi"  
+ [57] "nEicalo"    "dOumuse"    "foufuge"    "zeuguago"  
+ [61] "meucipo"    "beucelhe"   "fuivafa"    "feumira"   
+ [65] "neunene"    "quEifoça"   "geuducu"    "boigula"   
+ [69] "mailhuna"   "pEipade"    "quaigova"   "zEipalhe"  
+ [73] "nauruva"    "zeunufe"    "rEimebo"    "luifala"   
+ [77] "jOujalhe"   "faulenhe"   "geidunha"   "tauquade"  
+ [81] "paiquaba"   "coitagua"   "teulhanu"   "cEiguina"  
+ [85] "meuleti"    "boinubu"    "joiledu"    "meufisa"   
+ [89] "foidono"    "foidaja"    "voujique"   "dEitogo"   
+ [93] "queulhuqui" "reuquaça"   "tounega"    "queuguelho"
+ [97] "rouvica"    "rauquazi"   "peubuja"    "gueunhaza" 
+[101] "loiromo"    "vuiguaqui"  "guipafa"    "gOusiro"   
+[105] "sEinhiro"   "feunhunhu"  "nauzozo"    "peibaca"   
+[109] "zauçanhu"   "caucipo"    "voilhasu"   "ceigolho"  
+
 ```
+
+Note that in both cases **more** than 100 words were returned, but fewer than 150. This is due to the words that contained sequences pre-defined as **bad** for this particular language.
