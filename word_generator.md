@@ -171,3 +171,19 @@ word(O,VV,O,V,O,V, n=100)
 ```
 
 Note that in both cases **more** than 100 words were returned, but fewer than 150. This is due to the words that contained sequences pre-defined as **bad** for this particular language.
+
+
+-----
+
+### How to cite this script
+
+```{latex}
+@misc{Garcia2014,
+  author = {Garcia, Guilherme D.},
+  title = {Word Generator: an R script for generating pseudo-random words},
+  year = {2014},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/guilhermegarcia/r/blob/master/word_generator.md}
+}
+```
