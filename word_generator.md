@@ -46,7 +46,7 @@ if(missing(n)){stop('You forgot the (approx.) number of words.')} # Dont' forget
 
 # Nuclei in the language
 
-assign("V", c('a', 'e', 'i', 'o', 'u'), envir= .GlobalEnv)
+assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
 
 
 assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
