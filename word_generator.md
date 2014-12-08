@@ -22,7 +22,7 @@ The main objective of this function is to help you come up with (pseudo-)'random
 ```VV``` stands for a diphthong  (capital letters = low-mid vowels)  
 ```C``` stands for a coda consonant  
 
-Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences (in ```regex``` format), and only words that do **not** contain such sequences are returned. For that reason, the number of iterations in ```n``` is multiplied by ```1.5``` in the function.
+Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences (in ```regex``` format), and only words that do **not** contain such sequences are returned. As a result, the number of words that is actually returned will deviate from ```n``` (how much it deviates depends on your input). For that reason, the number of iterations in ```n``` is multiplied by ```1.5``` in the function, in an attempt to reduce this deviation. You could just use a large enough ```n```.
 
 -----
 
@@ -40,7 +40,7 @@ Alternatively, simply run ```source('http://guilhermegarcia.github.io/resources/
 
 word = function(...,n){
 
-if(missing(n)){stop('You forgot the (approx.) number of words.')} # Dont' forget to specify n
+if(missing(n)){stop('You forgot the (approx.) number of words.')}
 
 ## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
 
@@ -56,15 +56,20 @@ assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou')
 # Onsets (singleton and complex)
 
 
-assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
+assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 
+'z'), envir = .GlobalEnv)
 
-assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 'vr'), envir = .GlobalEnv)
+assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 
+'vr'), envir = .GlobalEnv)
 
 # Other possible onsets should be added
 
 # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mlh', 'mnh', 'mqu', 'mr', 'mç', 'ml')
+out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 
+'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 
+'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', 
+'[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj')
 
 # Codas (positionally neutral assumptions here)
 
@@ -78,7 +83,7 @@ args = list(...)    # creates a list with the arguments
 temp =  list()      # empty list for storing samples of segments
 words = list()      # empty list for storing random words
 
-for(j in 1:(n*1.5)){    # this loop generates n*1.5 words
+for(j in 1:(n*1.5)){    # this loop generates n words (here, n=100)
 for(i in 1:length(args)){
 
     temp[[i]] = sample(args[[i]],1)
@@ -90,7 +95,7 @@ words[j] = c(word)
 
 }
 
-badWords = c()     # This will store all the bad words (listed in the variable out above)
+badWords = c()
 
 for(i in 1:length(out)){
     badWords[[length(badWords)+1]] <- words[grep(out[i],words)]
@@ -103,7 +108,6 @@ finalList = words[!words %in% badWords]
 return(unique(unlist(finalList)))
 
 }
-
 
 ```
 
