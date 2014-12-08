@@ -79,7 +79,7 @@ words[j] = c(word)
 
 }
 
-badWords = c()
+badWords = c()     # This will store all the bad words (listed in the variable out above)
 
 for(i in 1:length(out)){
     badWords[[length(badWords)+1]] <- words[grep(out[i],words)]
