@@ -2,7 +2,7 @@
 
 *Guilherme D. Garcia (McGill)*
 
-[Latest update: Dec 8th 2014]: now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed.
+<font color='brown'><b>[Latest update: Dec 8th 2014]:</b></font> now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed.
 
 This script contains a single function for sampling a pre-defined number of words given some parameters—in that sense, the function itself doesn't care which language you're working with. The function was originally developed for Portuguese, but it can be modified to match any other language. The function ```word()``` contains possible onsets, nuclei and codas (you can also include additional phonotactic rules, as this is a basic word generator). ```word()``` takes any number of arguments, each of which represents a segment in the word that will be generated.
 
