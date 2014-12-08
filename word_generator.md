@@ -20,7 +20,7 @@ The main objective of this function is to help you come up with (pseudo-)'random
 ```VV``` stands for a diphthong  
 ```C``` stands for a coda consonant  
 
-Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences, and only words that do **not** contain such sequences are returned. On average (1000 simulations for a CV.CV.CV word), about 30% of the words generated will include these sequences, given the pseudo-random sampling. For that reason, 150 iterations should be more than ok if you want approx. 100 words.
+Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences (in ```regex``` format), and only words that do **not** contain such sequences are returned. On average (1000 simulations for a CV.CV.CV word), about 30% of the words generated will include these sequences, given the pseudo-random sampling. For that reason, 150 iterations should be more than ok if you want approx. 100 words.
 
 -----
 
@@ -47,7 +47,7 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 # Other possible onsets should be added
 
-# Sequences not allowed (a vector with sequences you don't want)
+# Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
 out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'sz', 'ç[bcdefghijklmnopqrstuvxz]')
 
