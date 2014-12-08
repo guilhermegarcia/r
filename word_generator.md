@@ -27,7 +27,7 @@ Therefore, ```word(O,V,O,V,O,V,O,V)``` will generate 100 CV.CV.CV.CV words. Howe
 ```{R}
 word = function(...){
 
-## First, let's define the parameters we're interested in
+## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
 
 # Nuclei in the language
 
