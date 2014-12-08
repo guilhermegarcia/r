@@ -29,7 +29,7 @@ Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV word
 ```{R}
 word = function(...,n){
 
-if(missing(n)){stop('You forgot the (approx.) number of words.')}
+if(missing(n)){stop('You forgot the (approx.) number of words.')} # Dont' forget to specify n
 
 ## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
 
@@ -67,7 +67,7 @@ args = list(...)    # creates a list with the arguments
 temp =  list()      # empty list for storing samples of segments
 words = list()      # empty list for storing random words
 
-for(j in 1:(n*1.5)){    # this loop generates n words (here, n=100)
+for(j in 1:(n*1.5)){    # this loop generates n*1.5 words
 for(i in 1:length(args)){
 
     temp[[i]] = sample(args[[i]],1)
