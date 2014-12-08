@@ -19,7 +19,7 @@ The main objective of this function is to help you come up with (pseudo-)'random
 ```O``` stands for a singleton onset  
 ```OO``` stands for a complex onset  
 ```V``` stands for a single vowel  
-```VV``` stands for a diphthong  
+```VV``` stands for a diphthong  (capital letters = low-mid vowels)  
 ```C``` stands for a coda consonant  
 
 Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences (in ```regex``` format), and only words that do **not** contain such sequences are returned. For that reason, the number of iterations in ```n``` is multiplied by ```1.5``` in the function.
