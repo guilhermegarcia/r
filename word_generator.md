@@ -1,7 +1,7 @@
 # Word generator
 
-*Guilherme D. Garcia (McGill)*
-[http://www.guilherme.ca](http://www.guilherme.ca)
+*Guilherme D. Garcia (McGill)*  
+[guilherme.ca](http://www.guilherme.ca)
 
 **[Latest update: Dec 8th 2014]:** now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed. In addition, an extra argument is included in the function, ```n```, which is basically the approximate number of words you want.
 
