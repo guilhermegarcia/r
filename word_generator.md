@@ -26,6 +26,8 @@ The main objective of this function is to help you come up with (pseudo-)'random
 ```VV``` stands for a diphthong  (capital letters = low-mid vowels)  
 ```C``` stands for a coda consonant  
 
+(By default, there are no complex codas in script. Simply edit the empty vector ```CC```).
+
 Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV words. However, you'll see that some of these words will have sequences of segments that are not well-formed in the language. For Portuguese, some examples are 'quu' and word-initial 'lh' (ok, **lhama** doesn't count). The updated version of the function (see above) includes a vector with all such sequences, so you can add as many as you want. Basically, ```out``` lists bad sequences (in ```regex``` format), and only words that do **not** contain such sequences are returned. As a result, the number of words that is actually returned will deviate from ```n``` (how much it deviates depends on your input). For that reason, the number of iterations in ```n``` is multiplied by ```1.5``` in the function, in an attempt to reduce this deviation. You could just use a large enough ```n```.
 
 -----
@@ -78,6 +80,8 @@ out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm',
 # Codas (positionally neutral assumptions here)
 
 assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
+
+assign("CC", c()) # Add complex codas here
 
 ##############################################################
 
