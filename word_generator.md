@@ -1,6 +1,7 @@
 # Word generator
 
 *Guilherme D. Garcia (McGill)*
+[http://www.guilherme.ca](http://www.guilherme.ca)
 
 **[Latest update: Dec 8th 2014]:** now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed. In addition, an extra argument is included in the function, ```n```, which is basically the approximate number of words you want.
 
@@ -46,7 +47,11 @@ Alternatively, simply run ```source('http://guilhermegarcia.github.io/resources/
 
 word = function(...,n){
 
-if(missing(n)){stop('You forgot the (approx.) number of words.')}
+args = list(...)    # creates a list with the arguments
+
+if(length(args) == 0){stop('You need an input. For example: O,V,O,V for a CV.CV word.')}
+
+if(missing(n)){stop('You forgot the (approx.) number of words: n = ?')}
 
 ## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
 
@@ -62,8 +67,8 @@ assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou')
 # Onsets (singleton and complex)
 
 
-assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 
-'m', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
+assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 
+'z'), envir = .GlobalEnv)
 
 assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 
 'vr'), envir = .GlobalEnv)
@@ -87,7 +92,7 @@ assign("CC", c()) # Add complex codas here
 
 # Now, the function per se, which basically uses loopings and samplings
 
-args = list(...)    # creates a list with the arguments
+
 temp =  list()      # empty list for storing samples of segments
 words = list()      # empty list for storing random words
 
