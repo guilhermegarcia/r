@@ -174,6 +174,7 @@ plotVowels = function(x){
 	
 	temp = strsplit(x,'')
 	temp = unlist(temp)
+	temp = tolower(temp)
 	allVowels = list()
 	
 	
