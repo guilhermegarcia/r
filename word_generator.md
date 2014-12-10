@@ -37,13 +37,55 @@ Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV word
 
 Download script [here](http://guilhermegarcia.github.io/resources/scripts/word_generator.R) and run it via ```source()```
 
-Alternatively, simply run ```source('http://guilhermegarcia.github.io/resources/scripts/word_generator.R')```
+The **easiest** way is to load the script via ```source('http://guilhermegarcia.github.io/resources/scripts/word_generator.R')```
 
 -----
 
 ```{R}
 
-# Copyright (c) 2014 Guilherme Duarte Garcia (under MIT license)
+# Licensed under MIT license
+
+# Copyright (c) 2014 Guilherme Duarte Garcia
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this script and associated documentation files (the "Script"), to deal
+# in the Script without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Script, and to permit persons to whom the Script is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Script.
+
+# THE SCRIPT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SCRIPT OR THE USE OR OTHER DEALINGS IN
+# THE SCRIPT.
+
+#################################################################### Enjoy.
+
+cat('\n\n\nCopyright (c) 2014 Guilherme Duarte Garcia \n\nword(...,n) generates n *unique* words. 
+Note that n is approximate, and will depend on your input. 
+You can also plot the vowel distribution using plotVowels().
+The script contains inventories for Portuguese.
+You can change the parameters to generate words in other languages.
+\nTypes of arguments: 
+\nO -> singleton onset \nOO -> complex onset \nV -> monophthong \nVV -> diphthong 
+C -> coda \n\nBy default, there are no complex codas.
+Simply edit the empty vector (CC) in the script.
+\nReference: O,V,C,O,V,O,V = CVC.CV.CV 
+\nExample: 
+\ntest <- word(O,V,C,n=80) # This will generate approx. 80 CVC words
+plotVowels(test) # This will plot the vowel distribution in the sample
+\nFor more information, type readMore() or visit:
+\nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n\n\n')
+
+require(scales)
+require(ggplot2)
+
 
 word = function(...,n){
 
@@ -56,7 +98,7 @@ word = function(...,n){
 assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
 
 
-assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'Ou', 'Eu', 'Ou'), envir = .GlobalEnv)
+assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
 
 # Add any other parameter you'd like
 
@@ -113,39 +155,50 @@ badWords = unlist(badWords)
 
 finalList = words[!words %in% badWords]
 
+
 return(unique(unlist(finalList)))
+
+
 
 }
 
 
-```
+# This will plot the vowel distribution of the corpus generated with word() above.
 
-## Some examples
+plotVowels = function(x){
+	
+	
+	assign("syllabic", c('a','e','i','o','u'), envir = .GlobalEnv)
+	
+	temp = strsplit(x,'')
+	temp = unlist(temp)
+	allVowels = list()
+	
+	
+	for(i in 1:length(temp)){
+		if(temp[i] %in% syllabic){
+			allVowels[[length(allVowels)+1]] <- c(temp[i])
+		}
+	}
+	
+	allVowels = data.frame(table(unlist(allVowels)))
+	names(allVowels) <- c('Vowel', 'Frequency')
+	allVowels$Proportion <- allVowels$Frequency / sum(allVowels$Frequency)
+	
+	distribution = ggplot(data=allVowels, aes(x=Vowel, y=Proportion)) + geom_histogram(stat='identity', fill='white', color='black') + ylab(NULL) + xlab('Vowel') + theme_bw() + ggtitle('Distribution of vowels') + theme(text=element_text(size=20)) + scale_y_continuous(labels=percent)
+	
+	return(distribution)
+	
+}
 
-Let's generate (approx.) 100 words with the following shape: CV.CVC (note that syllabification is *not* part of the function).
 
-```{R}
 
-word(O,V,O,V,C, n=100)
+# For more information, type readMore() to visit the website
 
-  [1] "gomun"  "juras"  "redus"  "galhen" "fefar"  "ninhos"
-  [7] "tavem"  "tazom"  "nevun"  "rones"  "vaçam"  "pebar" 
- [13] "cibir"  "jaral"  "jufil"  "larul"  "cenham" "galhos"
- [19] "bapon"  "suzon"  "vacur"  "dusan"  "fajar"  "buzol" 
- [25] "mobum"  "bajul"  "tibin"  "janhem" "fujen"  "nulhim"
- [31] "cigir"  "macim"  "salon"  "finam"  "dejul"  "zesar" 
- [37] "jusil"  "fujer"  "punel"  "vinhul" "zujem"  "rijis" 
- [43] "fofem"  "gecos"  "siges"  "dupor"  "ginhin" "cijun" 
- [49] "cipis"  "luvon"  "cafim"  "cemus"  "sirir"  "pabes" 
- [55] "mujir"  "filhim" "tiguil" "lenas"  "nuquar" "gises" 
- [61] "lupos"  "pagor"  "silun"  "nural"  "cabis"  "pulam" 
- [67] "zeguan" "putul"  "mipem"  "zamen"  "difar"  "canhis"
- [73] "tedon"  "jalil"  "dulas"  "vuvun"  "zinom"  "gasal" 
- [79] "salhes" "nobus"  "satun"  "tobul"  "muquim" "voner" 
- [85] "gacor"  "vomur"  "lecum"  "bonhir" "givis"  "jenas" 
- [91] "tufir"  "sanam"  "nibar"  "zorin"  "livar"  "tolur" 
- [97] "ziguas" "daran"  "migen"  "sulhel" "zitus"  "bujon" 
-[103] "dinam" 
+readMore = function(){
+    browseURL("https://github.com/guilhermegarcia/r/blob/master/word_generator.md")
+    }
+
 
 
 ```
