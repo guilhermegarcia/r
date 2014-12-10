@@ -257,7 +257,7 @@ plotVowels(corpus)
 -----
 
 ### How to cite this script
-
+```{latex}
 @manual{Garcia2014,
   author = {Garcia, Guilherme D.},
   title = {Word {G}enerator: an {R} script for generating pseudo-random words},
