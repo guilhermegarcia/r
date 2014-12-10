@@ -203,12 +203,13 @@ readMore = function(){
 
 ```
 
-Although the function is meant to generate a sample of hypothetical words, by definition, not all generated words will be nonce-words. You can either manually exclude real words **or** you could simply add an extra step to the function, where you'd only return words that are not in a given corpus.
+Although ```word()``` is meant to generate a sample of hypothetical words, by definition, not all generated words will be nonce-words. You can either manually exclude real words **or** you could simply add an extra step to the function, where you'd only return words that are not in a given corpus.
 
-Let's now generate CVV.CV.CV words.
+Let's generate CVV.CV.CV words.
 
 ```{R}
-word(O,VV,O,V,O,V, n=100)
+corpus <- word(O,VV,O,V,O,V, n=100)
+corpus
 
   [1] "toipavo"    "cuituzu"    "mOuguiri"   "tEigaba"   
   [5] "lainhugui"  "voupace"    "voidade"    "jouquise"  
@@ -241,7 +242,12 @@ word(O,VV,O,V,O,V, n=100)
 
 ```
 
-Note that in both cases **more** than 100 words were returned, but fewer than 150. This is due to the words that contained sequences pre-defined as **bad** for this particular language.
+Note that **more** than 100 words were returned, but fewer than 150. This is due to the words that contained sequences pre-defined as **bad** for this particular language. Finally, if you wanted to plot the vowel distribution of the corpus above:
+
+```{r}
+plotVowels(corpus)
+
+```
 
 
 -----
