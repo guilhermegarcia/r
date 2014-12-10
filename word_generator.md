@@ -98,7 +98,9 @@ word = function(...,n){
 assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
 
 
-assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
+# Falling diphthongs
+
+assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'ou', 'Eu', 'Ou', 'iu'), envir = .GlobalEnv)
 
 # Add any other parameter you'd like
 
