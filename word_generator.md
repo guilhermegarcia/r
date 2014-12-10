@@ -47,11 +47,7 @@ Alternatively, simply run ```source('http://guilhermegarcia.github.io/resources/
 
 word = function(...,n){
 
-args = list(...)    # creates a list with the arguments
 
-if(length(args) == 0){stop('You need an input. For example: O,V,O,V for a CV.CV word.')}
-
-if(missing(n)){stop('You forgot the (approx.) number of words: n = ?')}
 
 ## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
 
@@ -67,20 +63,15 @@ assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou')
 # Onsets (singleton and complex)
 
 
-assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 
-'z'), envir = .GlobalEnv)
+assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
 
-assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 
-'vr'), envir = .GlobalEnv)
+assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 'vr'), envir = .GlobalEnv)
 
 # Other possible onsets should be added
 
 # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 
-'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 
-'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', 
-'[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj')
+out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj')
 
 # Codas (positionally neutral assumptions here)
 
@@ -92,6 +83,10 @@ assign("CC", c()) # Add complex codas here
 
 # Now, the function per se, which basically uses loopings and samplings
 
+args = list(...)    # creates a list with the arguments
+
+if(length(args)==0){stop('You need a valid input.')}
+if(missing(n)){stop('You forgot the (approx.) number of words: n = ?')}
 
 temp =  list()      # empty list for storing samples of segments
 words = list()      # empty list for storing random words
@@ -121,6 +116,7 @@ finalList = words[!words %in% badWords]
 return(unique(unlist(finalList)))
 
 }
+
 
 ```
 
