@@ -56,7 +56,7 @@ word = function(...,n){
 assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
 
 
-assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'oi', 'au', 'eu', 'ou', 'eu', 'Ou'), envir = .GlobalEnv)
+assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'Ou', 'Eu', 'Ou'), envir = .GlobalEnv)
 
 # Add any other parameter you'd like
 
