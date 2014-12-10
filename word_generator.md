@@ -169,7 +169,8 @@ return(unique(unlist(finalList)))
 
 plotVowels = function(x){
 	
-	
+	if(missing(x)){stop('Your input needs to be a corpus generated via word()')}
+	if(class(x)!='character'){stop('Wrong input.')}
 	assign("syllabic", c('a','e','i','o','u'), envir = .GlobalEnv)
 	
 	temp = strsplit(x,'')
