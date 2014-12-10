@@ -258,13 +258,14 @@ plotVowels(corpus)
 
 ### How to cite this script
 
-```{latex}
-@misc{Garcia2014,
+@manual{Garcia2014,
   author = {Garcia, Guilherme D.},
-  title = {Word Generator: an R script for generating pseudo-random words},
+  title = {Word {G}enerator: an {R} script for generating pseudo-random words},
   year = {2014},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/guilhermegarcia/r/blob/master/word_generator.md}
-}
+  note = {GitHub repository available at \url{https://github.com/guilhermegarcia/r/blob/master/word_generator.md}}
+  }
 ```
+
+##### APA:
+
+Garcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/ guilhermegarcia/r/blob/master/word_generator.md
