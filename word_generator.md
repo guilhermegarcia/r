@@ -80,8 +80,10 @@ Simply edit the empty vector (CC) in the script.
 \nExample: 
 \ntest <- word(O,V,C,n=80) # This will generate approx. 80 CVC words
 plotVowels(test) # This will plot the vowel distribution in the sample
+
 \nFor more information, type readMore() or visit:
-\nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n\n\n')
+\nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n
+To cite this script, type  citeScript().\n\n\n')
 
 require(scales)
 require(ggplot2)
