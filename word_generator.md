@@ -202,6 +202,16 @@ plotVowels = function(x){
 readMore = function(){
     browseURL("https://github.com/guilhermegarcia/r/blob/master/word_generator.md")
     }
+    
+    
+
+citeScript = function(){
+	
+	cat('\nAPA:
+\nGarcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/ guilhermegarcia/r/blob/master/word_generator.md
+\nABNT:
+\nGARCIA, Guilherme D. Word Generator: an R script for generating pseudo-random words. GitHub repository disponível em https://github.com/ guilhermegarcia/r/blob/master/word_generator.md, 2014.')
+}
 
 
 
@@ -268,4 +278,8 @@ plotVowels(corpus)
 
 ##### APA:
 
-Garcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/ guilhermegarcia/r/blob/master/word_generator.md
+Garcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/guilhermegarcia/r/blob/master/word_generator.md
+
+##### ABNT
+
+GARCIA, Guilherme D. Word Generator: an R script for generating pseudo-random words. GitHub repository disponível em https://github.com/guilhermegarcia/r/blob/master/word_generator.md, 2014.
