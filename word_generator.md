@@ -282,6 +282,6 @@ plotVowels(corpus)
 
 Garcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/guilhermegarcia/r/blob/master/word_generator.md
 
-##### ABNT
+##### ABNT:
 
 GARCIA, Guilherme D. Word Generator: an R script for generating pseudo-random words. GitHub repository disponível em https://github.com/guilhermegarcia/r/blob/master/word_generator.md, 2014.
