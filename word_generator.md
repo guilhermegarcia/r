@@ -117,7 +117,7 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj', 'rrr', 'sss')
+out = c('^ss', '^rr', 'quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj', 'rrr', 'sss')
 
 # Codas (positionally neutral assumptions here)
 
