@@ -265,6 +265,7 @@ plotVowels(corpus)
 
 ```
 
+Finally, **bear in mind** that the corpus generated will simply follow the template *you* provide—regardless of whether such a template is natural in the language. For example, ```word(O,V,V,C,O,V,n=100)``` will generate CVVC.CV words, even though in Portuguese CVVC syllables are extremely rare.
 
 -----
 
