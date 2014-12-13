@@ -109,7 +109,7 @@ assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'ou', 'Eu', 'Ou',
 # Onsets (singleton and complex)
 
 
-assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
+assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 'rr', 's', 'ss', 't', 'v', 'z'), envir = .GlobalEnv)
 
 assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 'vr'), envir = .GlobalEnv)
 
@@ -117,7 +117,7 @@ assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl',
 
 # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
 
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj')
+out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj', 'rrr', 'sss')
 
 # Codas (positionally neutral assumptions here)
 
