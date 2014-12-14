@@ -123,7 +123,7 @@ out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 
 
 assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
 
-assign("CC", c()) # Add complex codas here
+# assign("CC", c(), envir = .GlobalEnv) # Add complex codas here
 
 ##############################################################
 
