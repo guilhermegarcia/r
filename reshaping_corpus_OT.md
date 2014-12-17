@@ -1,4 +1,4 @@
-# Reshaping a dataset for OT-ish applications
+# Reshaping a dataset for OT applications
 
 This function is very specific, as I needed to turn a data frame into a list of unique combinations of variables,
 include proportions, constraints, and assign violation marks. I used this for my 2014 paper on Gradient weight and stress,
