@@ -67,6 +67,9 @@ Download script [here](http://guilhermegarcia.github.io/resources/scripts/word_g
 
 #################################################################### Enjoy.
 
+require(scales)
+require(ggplot2)
+
 cat('\n\n\nCopyright (c) 2014 Guilherme Duarte Garcia \n\nword(...,n) generates n *unique* words. 
 Note that n is approximate, and will depend on your input. 
 You can also plot the vowel distribution using plotVowels().
@@ -85,8 +88,7 @@ plotVowels(test) # This will plot the vowel distribution in the sample
 \nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n
 To cite this script, type  citeScript().\n\n\n')
 
-require(scales)
-require(ggplot2)
+
 
 
 word = function(...,n){
