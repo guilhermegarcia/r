@@ -26,10 +26,12 @@ The main objective here is to quickly generate plots for stats-related handouts/
 ```{r}
 
 
+
 require(ggplot2)
 require(boot)
 
-cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u. \nSimply type dPlot() and add the distribution needed.\n\nCopyright (c) 2014 Guilherme Duarte Garcia\n\n\n')
+cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u. 
+Simply type dPlot() and add the distribution needed.\n\nCopyright (c) 2014 Guilherme Duarte Garcia\n\n\n')
 
 dPlot = function(d=c('bimodal, normal, f, j, log, cdf, u')){
 
@@ -80,8 +82,15 @@ u.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(
 
 return(u.plot)
 
+} else if(tolower(d) == 'cdf'){
+	
+cdf.plot = 
+
+ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=inv.logit) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Cumulative Distribution") + ylab(NULL) + xlab(NULL)
+	
 }
 
 }
+
 
 ```
