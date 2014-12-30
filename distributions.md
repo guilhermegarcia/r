@@ -15,7 +15,7 @@ the available distributions:
 
 Simply type ```dPlot()``` and use one of the available distributions. Download the script [here](http://guilhermegarcia.github.io/resources/scripts/dPlot.R) or use it via source:  
 
-```source('http://guilhermegarcia.github.io/resources/scripts/dPlot.R')```  fas
+```source('http://guilhermegarcia.github.io/resources/scripts/dPlot.R')```  
 
 
 ```{r}
