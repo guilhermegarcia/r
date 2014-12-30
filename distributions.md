@@ -29,7 +29,7 @@ The main objective here is to quickly generate plots for stats-related handouts/
 require(ggplot2)
 require(boot)
 
-cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u. \nSimply type dPlot() and add the distribution needed.\n\n Copyright (c) 2014 Guilherme Duarte Garcia')
+cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u. \nSimply type dPlot() and add the distribution needed.\n\n Copyright (c) 2014 Guilherme Duarte Garcia\n\n\n')
 
 dPlot = function(d=c('bimodal, normal, f, j, log, cdf, u')){
 
