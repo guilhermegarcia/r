@@ -15,7 +15,9 @@ the available distributions:
 
 Simply type ```dPlot()``` and use one of the available distributions. Download the script [here](http://guilhermegarcia.github.io/resources/scripts/dPlot.R) or use it via source:  
 
-```source('http://guilhermegarcia.github.io/resources/scripts/dPlot.R')```  
+```source('http://guilhermegarcia.github.io/resources/scripts/dPlot.R')```  fsadf
+
+The main objective here is to quickly generate plots for stats-related handouts/slides, for example, so you can modify the function to create any given distribution you'd like.
 
 
 ```{r}
