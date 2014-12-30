@@ -25,8 +25,6 @@ The main objective here is to quickly generate plots for stats-related handouts/
 
 ```{r}
 
-
-
 require(ggplot2)
 require(boot)
 
@@ -84,13 +82,12 @@ return(u.plot)
 
 } else if(tolower(d) == 'cdf'){
 	
-cdf.plot = 
-
-ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=inv.logit) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Cumulative Distribution") + ylab(NULL) + xlab(NULL)
+cdf.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=inv.logit) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Cumulative Distribution") + ylab(NULL) + xlab(NULL)
 	
-}
+return(cdf.plot)
 
 }
 
+}
 
 ```
