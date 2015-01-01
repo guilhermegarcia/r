@@ -40,9 +40,7 @@ if(!d %in% c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u')){stop(print('This
 
 if(tolower(d) == 'normal'){
 
-normal = data.frame(item=rnorm(100000,mean=0,sd=1))
-
-normal.plot = ggplot(data=normal, aes(x=item)) + stat_function(fun=dnorm) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Normal Distribution") + ylab(NULL) + xlab(NULL)
+normal.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(x)(dnorm(x,mean=0,sd=2))) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Normal Distribution") + ylab(NULL) + xlab(NULL)
 
 return(normal.plot)
 
