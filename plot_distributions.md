@@ -25,6 +25,7 @@ The main objective here is to quickly generate plots for stats-related handouts/
 
 ```{r}
 
+
 require(ggplot2)
 require(boot)
 
@@ -60,21 +61,21 @@ return(log.plot)
 } else if(tolower(d) == 'bimodal'){
 
 
-bimodal.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(x)(dnorm(x,mean=5,sd=2)+dnorm(x,mean=-5,sd=2))) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Bimodal Distribution") + ylab(NULL) + xlab(NULL)
+bimodal.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(x){dnorm(x,mean=5,sd=2)+dnorm(x,mean=-5,sd=2)}) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("Bimodal Distribution") + ylab(NULL) + xlab(NULL)
 
 
 return(bimodal.plot)
 
 } else if(tolower(d) == 'f'){
 
-f.plot = ggplot(data.frame(j=c(0,10)), aes(x=j)) + stat_function(fun=function(x)(df(x,df1=10,df2=10))) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("F Distribution") + ylab(NULL) + xlab(NULL)
+f.plot = ggplot(data.frame(j=c(0,10)), aes(x=j)) + stat_function(fun=function(x){df(x,df1=10,df2=10)}) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("F Distribution") + ylab(NULL) + xlab(NULL)
 
 
 return(f.plot)
 
 } else if(tolower(d) == 'u'){
 
-u.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(x)(-dnorm(x,mean=0,sd=3)))  + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("U-shaped Distribution") + ylab(NULL) + xlab(NULL)
+u.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=function(x){-dnorm(x,mean=0,sd=3)})  + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle("U-shaped Distribution") + ylab(NULL) + xlab(NULL)
 
 return(u.plot)
 
@@ -87,5 +88,6 @@ return(cdf.plot)
 }
 
 }
+
 
 ```
