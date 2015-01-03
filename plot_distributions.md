@@ -37,7 +37,7 @@ dPlot = function(d=c('bimodal, normal, f, j, log, cdf, u')){
 d = as.character(substitute(d))
 
 
-if(!d %in% c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u')){stop(print('This is not a valid input'))}
+if(!d %in% c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u')){stop('This is not a valid input')}
 
 if(tolower(d) == 'normal'){
 
