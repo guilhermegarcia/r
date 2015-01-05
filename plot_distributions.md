@@ -10,6 +10,7 @@ the available distributions:
 * ```log```
 * ```cdf``` (cumulative distribution function)
 * ```u``` (u-shaped)
+* ```chi``` (Chi-square)
 
 ### How to use the function
 
@@ -26,18 +27,21 @@ The main objective here is to quickly generate plots for stats-related handouts/
 ```{r}
 
 
+
 require(ggplot2)
 require(boot)
 
-cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u. 
+cat('\n\nTypes of distributions available: bimodal, normal, f, j, log, cdf, u, chi. 
 Simply type dPlot() and add the distribution needed.\n\nCopyright (c) 2014 Guilherme Duarte Garcia\n\n\n')
 
-dPlot = function(d=c('bimodal, normal, f, j, log, cdf, u')){
+dPlot = function(d=c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u')){
 
 d = as.character(substitute(d))
 
+d = tolower(d)
 
-if(!d %in% c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u')){stop('This is not a valid input')}
+
+if(!d %in% c('bimodal', 'normal', 'f', 'j', 'log', 'cdf', 'u', 'chi')){stop('This is not a valid input')}
 
 if(tolower(d) == 'normal'){
 
@@ -85,6 +89,12 @@ cdf.plot = ggplot(data.frame(j=c(-10,10)), aes(x=j)) + stat_function(fun=inv.log
 	
 return(cdf.plot)
 
+} else if(tolower(d) == 'chi'){
+
+chi.plot = ggplot(data.frame(j=c(0,20)), aes(x=j)) + stat_function(fun=function(x){dchisq(x, 5, ncp = 0, log = FALSE)}) + theme_bw() + theme(text=element_text(size=15, vjust=1)) + ggtitle(expression(paste(chi^2, " Distribution"))) + ylab(NULL) + xlab(NULL)
+	
+return(chi.plot)
+	
 }
 
 }
