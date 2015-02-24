@@ -119,25 +119,6 @@ corpora = data.frame(word=intersect(corpus1Freq$word, corpus2Freq$word), obs1=NA
 
 corpora = corpora[100:1100,]
 
-# edge1 = sample((round(nrow(corpora)/2)):nrow(corpora),1000)
-# edge2 = sample(1:(nrow(corpora)/2),1000)
-
-# start = c()
-# finish = c()
-
-# for(i in 1:length(edge1)){
-	# if(edge2[i] - edge1[i] >= 1000){
-		# start[length(start)+1] = edge1[i]
-		# finish[length(finish)+1] = edge2[i]
-	# }
-# }
-
-# start[length(start)+1] = 'hey'
-
-# edge2[3] - edge1[3] >= 1000
-
-# corpora[]
-
 
 
 # Obs1 column
