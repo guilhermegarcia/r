@@ -1,10 +1,3 @@
-### Text similarity
-
-This is ongoing work on text similarity, using the ```tm``` package and implementing chi-square test as suggested in Kilgarriff (2001).
-
-
-```{r}
-
 library(tm)
 library(SnowballC)
 library(qdapDictionaries)
@@ -13,45 +6,58 @@ library(RColorBrewer)
 library(ggplot2)
 library(scales)
 
-# Not all these packages are being used yet.
+# Not all these packages are being used yet. This assumes you have a folder called 'text' in your directory.
 
 #############################
 
 # Script for text similarity
 
 
-# This will compare *two* entire documents after cleaning them. What needs to be added is the randomization part, whereby slices are taken and analysed separately. This, however, shouldn't take long to implement. The next steps, as I mentioned today, could be adding complementary metrics into the script, so we'd have several functions to measure the dimensions of text similarity. Finally, a summary could be built. The essential part is as follows.
+# This will compare *two* entire documents after cleaning them. 
+#What needs to be added is the randomization part, whereby slices are taken and analysed separately. 
+#This, however, shouldn't take long to implement. 
+#The next steps, as I mentioned today, could be adding complementary metrics into the script, so we'd have several functions to measure the dimensions of text similarity. Finally, a summary could be built. The essential part is as follows.
 
 ################################
 
-setwd('~/Desktop')
+setwd('')
 
+#there are different options for preparing the corpuses.
+#Option 1 = scaling, which sums rows and divides by the scaling value
+#Option 2 = not-scaling -- when document lengths are all the same.
 
-# source is any folder with a given number of docs
+#options(mc.cores=1) #sometimes this is necesssary
 
-source = DirSource('texts/')
-corpus = Corpus(source, readerControl = list(reader=readPlain))
+#load corpus
+corpus <- VCorpus(DirSource("texts"), readerControl=list(language="English"))
+#clean corpus
+corpus <- tm_map(corpus, content_transformer(stripWhitespace))
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, content_transformer(removePunctuation))
+corpus <- tm_map(corpus, content_transformer(removeNumbers))
 
-corpus = tm_map(corpus, content_transformer(tolower))
+#mget scaling value (before removing stopwords)
+corpus.dtm<-DocumentTermMatrix(corpus, control=list(wordLengths=c(1,Inf)))
+corpus.matrix<-as.matrix(corpus.dtm, stringsAsFactors=F)
+scaling<-rowSums(corpus.matrix)
 
-corpus = tm_map(corpus, removeWords, stopwords("english"))
+#remove stopwords
+corpus <- tm_map(corpus, removeWords, stopwords("English"))
+#stem your documents
+corpus <- tm_map(corpus, stemDocument, language = "english")
 
-# Stemming corpora + removing white space
+#remake dtm without stopwords
+corpus.dtm<-DocumentTermMatrix(corpus)
+corpus.matrix<-as.matrix(corpus.dtm, stringsAsFactors=F)
+#remove sparse words
+corpus.sparse.dtm<-removeSparseTerms(corpus.dtm, .4)
+corpus.sparse.matrix<-as.matrix(corpus.sparse.dtm, stringsAsFactors=F)
+#scale
+corpus.scaled<-corpus.matrix
+corpus.scaled[,1:ncol(corpus.matrix)]<- corpus.matrix[,1:ncol(corpus.matrix)]/scaling
+#corpus.scaled<-corpus.sparse.matrix
+#corpus.scaled[,1:ncol(corpus.sparse.matrix)]<- corpus.sparse.matrix[,1:ncol(corpus.sparse.matrix)]/scaling
 
-corpus = tm_map(corpus, stemDocument)
-
-corpus = tm_map(corpus, stripWhitespace)
-
-# Punctuation
-
-
-
-corpus[[1]] = removePunctuation(corpus[[1]])
-corpus[[2]] = removePunctuation(corpus[[2]])
-
-dtm = DocumentTermMatrix(corpus)
-
-dtm = removeSparseTerms(dtm, 0.4)
 
 # From this point, randomization can be accomplished with different samplings. One way to do this is first clean everything in the folder, and then start the analysis. Alternatively, the cleaning would be part of the process of each iteration (I'd go with the former option, though).
 
@@ -59,16 +65,20 @@ dtm = removeSparseTerms(dtm, 0.4)
 ## MAKE FREQ LISTS FOR CORPORA
 
 
+
+similarity = function(x,y){
+
+options(warn=-1)
+
 ## CORPUS 1
 
-corpus1 = unlist(corpus[[1]])
+
+corpus1 = unlist(corpus[[x]])
 
 corpus1 = strsplit(corpus1, ' ')
 
-length(corpus1)
 
-
-corpus1Freq = data.frame(termFreq(corpus[[1]]))
+corpus1Freq = data.frame(termFreq(corpus[[x]]))
 
 corpus1Freq['word'] = rownames(corpus1Freq)
 
@@ -77,20 +87,20 @@ row.names(corpus1Freq) = NULL
 
 corpus1Freq = corpus1Freq[with(corpus1Freq, order(-obs)),]
 
-head(corpus1Freq)
+
 
 
 
 ## CORPUS 2
 
-corpus2 = unlist(corpus[[2]])
+corpus2 = unlist(corpus[[y]])
 
 corpus2 = strsplit(corpus2, ' ')
 
 length(corpus2)
 
 
-corpus2Freq = data.frame(termFreq(corpus[[2]]))
+corpus2Freq = data.frame(termFreq(corpus[[y]]))
 
 corpus2Freq['word'] = rownames(corpus2Freq)
 
@@ -101,95 +111,60 @@ corpus2Freq = corpus2Freq[with(corpus2Freq, order(-obs)),]
 
 
 
-head(corpus2Freq)
-
-
-
-
-
 
 ## COMPARISON BETWEEN CORPORA
 
 corpora = data.frame(word=intersect(corpus1Freq$word, corpus2Freq$word), obs1=NA, obs2=NA)
 
-head(corpora)
+
+corpora = corpora[100:1100,]
+
+# edge1 = sample((round(nrow(corpora)/2)):nrow(corpora),1000)
+# edge2 = sample(1:(nrow(corpora)/2),1000)
+
+# start = c()
+# finish = c()
+
+# for(i in 1:length(edge1)){
+	# if(edge2[i] - edge1[i] >= 1000){
+		# start[length(start)+1] = edge1[i]
+		# finish[length(finish)+1] = edge2[i]
+	# }
+# }
+
+# start[length(start)+1] = 'hey'
+
+# edge2[3] - edge1[3] >= 1000
+
+# corpora[]
+
+
 
 # Obs1 column
 
 for(i in 1:nrow(corpora)){
-temp = subset(corpus1Freq, corpus1Freq$word == corpora[i,1])
-corpora[i,2] = temp[1,1]}
+  temp = subset(corpus1Freq, corpus1Freq$word == corpora[i,1])
+  corpora[i,2] = temp[1,1]}
 
 
 # Obs2 column
 
 for(i in 1:nrow(corpora)){
-temp = subset(corpus2Freq, corpus2Freq$word == corpora[i,1])
-corpora[i,3] = temp[1,1]}
+  temp = subset(corpus2Freq, corpus2Freq$word == corpora[i,1])
+  corpora[i,3] = temp[1,1]}
 
 
-###############
-
-
-corpora['exp1'] = NA
-corpora['exp2'] = NA
+x = corpora$obs1
+y = corpora$obs2
 
 
 
-# Calculating expected values for each word
-
-N1 = nrow(corpus1Freq)
-N2 = nrow(corpus2Freq)
+Chi2 = chisq.test(as.table(rbind(x,y)))[1][[1]][[1]]
+pValue = chisq.test(as.table(rbind(x,y)))[3][[1]]
 
 
-for(i in 1:nrow(corpora)){
-	corpora[i,4] = (N1 * (corpora[i,2] + corpora[i,3]))/(N1 + N2)
+output = data.frame(Chi2, pValue)
+
+return(output)
 }
 
-for(i in 1:nrow(corpora)){
-	corpora[i,5] = (N2 * (corpora[i,2] + corpora[i,3]))/(N1 + N2)
-}
-
-# exp1 = (N1 * (O1 + O2))/(N1 + N2)
-# exp2 = (N2 * (O1 + O2))/(N1 + N2)
-
-
-# Creating other columns for chi
-
-corpora['chi1'] = ((corpora$obs1 - corpora$exp1)^2)/corpora$exp1
-corpora['chi2'] = ((corpora$obs2 - corpora$exp2)^2)/corpora$exp2
-
-# corpora['EXP'] = corpora$exp1 + corpora$exp2
-# corpora['OBS'] = corpora$obs1 + corpora$obs2
-
-head(corpora,10)
-
-
-
-# Summary
-
-# sum(corpora$chi1)
-# sum(corpora$chi2)
-
-# var(corpora$chi1)
-# var(corpora$chi2)
-
-# mean(corpora$chi1)
-# mean(corpora$chi2)
-
-# sd(corpora$chi1)
-# sd(corpora$chi2)
-
-chisq.test(corpora$obs1, corpora$obs2)
-
-chisq.test(corpora$chi1, corpora$chi2)
-
-
-################################
-
-
-
-
-
-
-```
