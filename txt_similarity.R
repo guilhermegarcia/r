@@ -116,11 +116,6 @@ corpus2Freq = corpus2Freq[with(corpus2Freq, order(-obs)),]
 
 corpora = data.frame(word=intersect(corpus1Freq$word, corpus2Freq$word), obs1=NA, obs2=NA)
 
-
-corpora = corpora[100:1100,]
-
-
-
 # Obs1 column
 
 for(i in 1:nrow(corpora)){
