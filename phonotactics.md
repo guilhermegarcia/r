@@ -13,7 +13,8 @@ transcription system you have in your own corpus.
 
 ### Example
 
-Let's take the sequence ```kame``` in Portuguese. The function already loads all the necessary packages.
+Let's take the sequence ```kame``` in Portuguese (the function already loads all the necessary packages). Given that sequence,
+what are the possible following segments—and which one is more frequent in the whole lexicon?
 
 ```{r}
 
@@ -31,7 +32,7 @@ Let's take the sequence ```kame``` in Portuguese. The function already loads all
 
 ```
 
-So, given the string ```kame```, 40% of the time the next segment will be an ```l``` in Portuguese.
+We can see that, given the string ```kame```, the next segment will be an ```[l]``` 40% of the time in Portuguese.
 Next, you can also generate a histogram with the output above. 
 Simply type ```pHist```. The histogram requires the ```extrafont``` package, so if you don't want 
 to set a different font face, just delete that from the script.
