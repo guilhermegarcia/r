@@ -46,7 +46,8 @@ to set a different font face, just delete that from the script.
 lex = read.csv('')
 
 # In my case, I'll add a new column to the lexicon, which will remove the hyphens from all words.
-# This is necessary here because the Portuguese Stress Corpus has syllabification included in the pronunciation column.
+# This is necessary here because the Portuguese Stress Corpus has syllabification 
+	# included in the pronunciation column.
 
 lex['string'] = gsub('[-\']', '\\1', lex$pro)
 
