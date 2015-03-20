@@ -114,8 +114,8 @@ seg <- function(s){
 	names(dataHist) = c('Segment', 'Proportion')
 
 	
-# Below, I create a global variable for the histogram. This histogram contains my deafault settings, so feel free to
-# adapt it to your liking.
+# Below, I create a global variable for the histogram. This histogram contains my deafault settings, 
+	# so feel free to adapt it to your liking.
 	
 assign("pHist", ggplot(data=dataHist, aes(x=Segment, y=Proportion, size=Proportion)) 
   + geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('Input:', input)) 
