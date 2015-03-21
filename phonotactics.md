@@ -21,14 +21,14 @@ what are the possible following segments—and which one is more frequent in the
 > seg(kame)
 
   Segment 	n	Proportion
-1       l       17	41.46
-2       r      	15	36.59
-3       t        3	7.32
-4       s	 2	4.88
-5       d        1	2.44
-6       k        1	2.44
-7       m        1	2.44
-8       n        1	2.44
+1	l	17	41.46
+2	r	15	36.59
+3	t	3	7.32
+4	s	2	4.88
+5	d	1	2.44
+6	k	1	2.44
+7	m	1	2.44
+8	n	1	2.44
 
 ```
 
