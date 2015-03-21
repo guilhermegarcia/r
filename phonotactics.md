@@ -20,7 +20,7 @@ what are the possible following segments—and which one is more frequent in the
 
 > seg(kame)
 
-  Segment	n	Proportion
+  	Segment	n	Proportion
 1	l	17	41.46
 2	r	15	36.59
 3	t	3	7.32
