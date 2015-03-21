@@ -107,7 +107,12 @@ seg <- function(s){
 # Below, I create a global variable for the histogram. This histogram contains my deafault settings, 
 # so feel free to adapt it to your liking.
 
-assign("pHist", ggplot(data=outputTable, aes(x=Segment, y=n)) + geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('[', input, '... ]', sep='')) + xlab('Following segment') + ylab('n') + theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), legend.position = 'none', axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
+assign("pHist", ggplot(data=outputTable, aes(x=Segment, y=n)) + geom_histogram(stat='identity', alpha=0.5) 
+	+ ggtitle(paste('[', input, '... ]', sep='')) + xlab('Following segment') + ylab('n') 
+	+ theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), 
+	text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), 
+	legend.position = 'none', axis.title.y=element_text(vjust=1.3), 
+	axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
 	
 	return(outputTable)
 	
