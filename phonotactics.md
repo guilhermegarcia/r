@@ -2,7 +2,7 @@
 
 Assume you have a string of segments ```str``` in a given language. This script contains a function ```seg()``` that takes
 ```str``` as its only argument and returns a data frame with the segments that follow ```str``` in the language in question.
-Segments are sorted in decreasing order of frequency (given in %).
+Segments are sorted in decreasing order of frequency.
 
 ### How to use it
 
@@ -20,15 +20,15 @@ what are the possible following segments—and which one is more frequent in the
 
 > seg(kame)
 
-  Segment Proportion
-1       l      41.46
-2       r      36.59
-3       t       7.32
-4       s       4.88
-5       d       2.44
-6       k       2.44
-7       m       2.44
-8       n       2.44
+  Segment 	n	Proportion
+1       l       17	41.46
+2       r      	15	36.59
+3       t        3	7.32
+4       s	 2	4.88
+5       d        1	2.44
+6       k        1	2.44
+7       m        1	2.44
+8       n        1	2.44
 
 ```
 
@@ -97,38 +97,24 @@ seg <- function(s){
 	
 	outputTable = table(output)
 	
-	outputTable = round(prop.table(outputTable)*100,2)
-	
-	outputTableHist = round(prop.table(outputTable),2)
-	
-	outputTable = sort(outputTable, decreasing=T)
-	
-	outputTableHist = sort(outputTableHist, decreasing=T)
-	
-	dataHist = melt(outputTableHist)
-	
-	data = melt(outputTable)
-	
-	names(data) = c('Segment', 'Proportion')
-	
-	names(dataHist) = c('Segment', 'Proportion')
+	outputTable = melt(sort(outputTable, decreasing=T))
 
+	names(outputTable) = c('Segment', 'n')
 	
+	outputTable$Proportion = round(((outputTable$n)/sum(outputTable$n))*100,2)
+	
+		
 # Below, I create a global variable for the histogram. This histogram contains my deafault settings, 
-	# so feel free to adapt it to your liking.
-	
-assign("pHist", ggplot(data=dataHist, aes(x=Segment, y=Proportion, size=Proportion)) 
-	+ geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('[', input, '... ]', sep='')) 
-	+ xlab('Following segment') + ylab('Proportion') + scale_y_continuous(labels=percent_format()) 
-	+ theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), 
-	text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), legend.position = 'none', 					axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
+# so feel free to adapt it to your liking.
 
-
-# The function outputs a data frame. If you want to generate the histogram, simply follow the example above.
+assign("pHist", ggplot(data=outputTable, aes(x=Segment, y=n)) + geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('[', input, '... ]', sep='')) + xlab('Following segment') + ylab('n') + theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), legend.position = 'none', axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
 	
-	return(data)
+	return(outputTable)
 	
 }
+
+# The function outputs a data frame. If you want to generate the histogram, simply follow the example above.
+
 
 ```
 
