@@ -33,7 +33,7 @@ what are the possible following segments—and which one is more frequent in the
 ```
 
 We can see that, given the string ```kame```, the next segment will be an ```[l]``` 40% of the time in Portuguese.
-Next, you can also generate a histogram with the output above. 
+Next, you can also generate a **histogram** with the output above. 
 Simply type ```pHist```. The histogram requires the ```extrafont``` package, so if you don't want 
 to set a different font face, just delete that from the script.
 
@@ -125,7 +125,7 @@ assign("pHist", ggplot(data=dataHist, aes(x=Segment, y=Proportion, size=Proporti
   axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
 
 
-# The function outputs a data frame. If you want to generate the plot, simply follow the example above.
+# The function outputs a data frame. If you want to generate the histogram, simply follow the example above.
 	
 	return(data)
 	
