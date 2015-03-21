@@ -118,11 +118,10 @@ seg <- function(s){
 	# so feel free to adapt it to your liking.
 	
 assign("pHist", ggplot(data=dataHist, aes(x=Segment, y=Proportion, size=Proportion)) 
-  + geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('Input:', input)) 
-  + xlab('Following segment') + ylab('Proportion') + scale_y_continuous(labels=percent_format()) 
-  + theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), 
-  text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), legend.position = 'none', 
-  axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
+	+ geom_histogram(stat='identity', alpha=0.5) + ggtitle(paste('[', input, '... ]', sep='')) 
+	+ xlab('Following segment') + ylab('Proportion') + scale_y_continuous(labels=percent_format()) 
+	+ theme_bw() + theme(plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), 'cm'), 
+	text=element_text(size=25, family="CMU Sans Serif", vjust=1.5), legend.position = 'none', 					axis.title.y=element_text(vjust=1.3), axis.title.x=element_text(vjust=-0.3)), envir = .GlobalEnv)
 
 
 # The function outputs a data frame. If you want to generate the histogram, simply follow the example above.
