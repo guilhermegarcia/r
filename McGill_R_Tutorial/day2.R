@@ -480,7 +480,7 @@ prop.table(xtabs(~realization + animacyRec, give),2)
 
 
 
-# If you're taking methods, these are the answers to the practice problem (Homework 0)
+# If you're taking Methods, these are the answers to the practice problem (Homework 0)
 
 # Questions from Methods (HW0)
 
