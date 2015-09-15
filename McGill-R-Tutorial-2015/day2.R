@@ -420,7 +420,7 @@ summ1b
 
 give = new[new$verb == "give",]
 
-nrow(give)
+cat("There are", nrow(give), "rows")
 
 # 2. Summarize that data frame using ddply, adding a column for mean LengthOfTheme. Assign the output to a variable giveSum. You should keep the following columns: animacyRec, realization and semClass. The new column should be called meanLength. Now look at the rows: which case has the largest meanLength of theme?
 
