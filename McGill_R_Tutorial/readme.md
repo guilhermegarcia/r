@@ -1,4 +1,5 @@
-### R Tutorial - Department of Linguistics, McGill University
+### Department of Linguistics, McGill University
+#### R Tutorial
 #### Fall 2015 | Guilherme D. Garcia
 
 Tutorial outline:
