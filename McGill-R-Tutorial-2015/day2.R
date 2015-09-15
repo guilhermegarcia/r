@@ -413,30 +413,39 @@ summ1b
 ######################################
 
 
+
 # EXERCISE
 
 # 1. Create a data frame that contains only data for the verb give. Assign it to variable called "give". How many rows does the data frame have?
 
+give = new[new$verb == "give",]
 
+nrow(give)
 
+# 2. Summarize that data frame using ddply, adding a column for mean LengthOfTheme. Assign the output to a variable giveSum. You should keep the following columns: animacyRec, realization and semClass. The new column should be called meanLength. Now look at the rows: which case has the largest meanLength of theme?
 
-# 2. Summarize that data frame using ddply, adding a column for mean LengthOfTheme. Assign the output to a variable giveSum. You should keep the following columns: AnimacyOfRec, RealizationOfRecipient and SemanticClass. The new column should be called meanLength. Now look at the rows: which case has the largest meanLength of theme?
+giveSum = ddply(give,.(animacyRec, realization, semClass), summarise, meanLength = mean(lengthTheme))
 
+# The highest mean is 5.84: animacyRec = animate, realization = NP, semClass = a.
 
+# 3. What % of cases in give are realized with NP? And PP? Add a second dimension (proRec). Now only look at pronominal cases. What's the % of realization = NP?
 
+prop.table(xtabs(~realization, give))
 
+# 84.6% of the cases are realized as NP; 15.4% as PP.
 
-# 3. What % of cases in give are realized with NP? And PP? What happens when you add a second dimension (PronomOfRec)? Is your intuition correct for this verb?
+prop.table(xtabs(~realization + proRec, give),2)
 
-
+# 92.9% = NP (among pronominal)
 
 
 
 
 # 4. Finally, does the animacy of the recipient have an apparent effect on its realization in give?
 
+prop.table(xtabs(~realization + animacyRec, give),2)
 
-
+# Apparently, no.
 
 
 
@@ -476,6 +485,8 @@ summ1b
 # Questions from Methods (HW0)
 
 # Q1
+
+data = read.csv("read_tapped_data")
 
 df = data
 
