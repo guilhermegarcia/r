@@ -2,7 +2,7 @@
 #### R Tutorial
 #### Fall 2015 | Guilherme D. Garcia
 
-Tutorial outline:
+Outline:
 
 ##### Day 1 (Sep 8)
 
