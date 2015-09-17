@@ -102,7 +102,8 @@ x = c(1,2,3,4,5,6,7)
 
 x = "This is a string. You need quotation marks to make strings."
 
-# If you don't use quotation marks, R will think your word is a variable. You can either you single or double marks. Double are better, since you may have contractions in English. Just be consistent.
+# If you don't use quotation marks, R will think your word is a variable. You can either you single or double marks. 
+# Double are better, since you may have contractions in English. Just be consistent.
 
 
 
@@ -235,11 +236,15 @@ myList
 # ===================== 4. DATA FRAMES
 
 
-# Data frames basically "data". This is basically your 'Excel spreadsheet', except that in R you won't be looking at it all the time (that wouldn't be very useful anyway).
+# Data frames basically "data". This is basically your 'Excel spreadsheet', except that in R you won't be looking at 
+# it all the time (that wouldn't be very useful anyway).
 
-# R can read several kinds of files, but we will be using CSV, since this is the most common type in Linguistics (XML and TXT are also quite common). Avoid using XLS. Unless you're working with big data, csv and txt are totally fine (XML is great for corpora, for example).
+# R can read several kinds of files, but we will be using CSV, since this is the most common 
+# type in Linguistics (XML and TXT are also quite common). Avoid using XLS. Unless you're working with 
+# big data, csv and txt are totally fine (XML is great for corpora, for example).
 
-# For now, let's not load data yet. Instead, let's create a table from scratch. You will not do this very often, but by doing this you'll learn how to do things that you will be doing a lot.
+# For now, let's not load data yet. Instead, let's create a table from scratch. 
+# You will not do this very often, but by doing this you'll learn how to do things that you will be doing a lot.
 
 
 # First, let's create a vector of countries. Then, another vector with capital cities.
@@ -254,7 +259,8 @@ capitals = c("Buenos Aires", "Berlin", "Madrid", "Moscow", "Tokyo")
 countries
 capitals
 
-# Imagine these two vectors are our future columns. Now, let's create our data frame, using the function data.frame(). This will 'glue' our columns (vectors above) together.
+# Imagine these two vectors are our future columns. Now, let's create our data frame, using the function data.frame(). 
+# This will 'glue' our columns (vectors above) together.
 
 myData = data.frame(Country = countries, Capital = capitals) 
 
@@ -311,7 +317,8 @@ myData["Population"] = population
 
 myData
 
-# a$b basically means column b inside a. In other words, inside myData, create Population, which will be = to our variable population above
+# a$b basically means column b inside a. In other words, inside myData, create Population, 
+# which will be = to our variable population above
 
 
 myData
@@ -319,7 +326,8 @@ myData
 ######################
 
 
-# Let's now create a nother column called "Big". This will be "Yes" if the country has more than 100 million inhabitants, and "No" otherwise. We'll do that using a very intuitive function: ifelse()
+# Let's now create a nother column called "Big". This will be "Yes" if the country has more than 100 million 
+# inhabitants, and "No" otherwise. We'll do that using a very intuitive function: ifelse()
 
 
 
@@ -354,7 +362,8 @@ myData
 
 # Then, create a new column called "WhoSpeakIt", which should be:
 
-# "Many" if there are more than 400 million speakers; "Some" if there are more than 100 million speakers; and "Few" if there are fewer than 1 million speakers.
+# "Many" if there are more than 400 million speakers; "Some" if there are more than 100 million speakers; 
+# and "Few" if there are fewer than 1 million speakers.
 
 # Hint: You can do this in 6 steps.
 
