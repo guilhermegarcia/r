@@ -28,3 +28,5 @@
 ##### Day 4 (Sep 29): Functions
 
 - Functions, loops and string manipulation
+- Regular expressions
+- Example: from segments to a CV template
