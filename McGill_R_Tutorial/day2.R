@@ -72,7 +72,7 @@ data = read.csv("file_name.csv")
 
 system.time(rnorm(10000000))
 
-# So it takes 8 s for R to generate 10 million numbers (which are normally distributed)
+# So it takes 8s (in my laptop) for R to generate 10 million numbers (which are normally distributed)
 
 path = "path_to_file_here"
 
