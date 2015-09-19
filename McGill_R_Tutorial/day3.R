@@ -341,12 +341,6 @@ ggplot(data=d[d$LengthInLetters==3,], aes(x=Familiarity, y=RTlexdec)) + geom_tex
 
 
 
-
-
-###### Annotation
-
-
-
 ############ Formatting
 
 # Visit http://docs.ggplot2.org/0.9.2.1/theme.html
