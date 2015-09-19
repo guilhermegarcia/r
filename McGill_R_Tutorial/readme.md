@@ -24,9 +24,9 @@
 - Different plotting functions: boxplots, scatter plots, bar plots, violin plots etc.
 - Adding error bars
 - Formatting plots (fonts, spacing, colors, annotation, text as variable)
-
+---
 This particular topic also has an ```html``` version, where you an visualize all the plots. Click [**here**](http://guilhermegarcia.github.io/resources/intro_to_r/intro_to_ggplot2.html).
-
+---
 ##### Day 4 (Sep 29): Functions
 
 - Functions, loops and string manipulation
