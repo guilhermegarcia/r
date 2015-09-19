@@ -23,7 +23,7 @@
 - Data visualization with ```ggplot()```
 - Different plotting functions: boxplots, scatter plots, bar plots, violin plots etc.
 - Adding error bars
-- Formatting plots (fonts, spacing, colors)
+- Formatting plots (fonts, spacing, colors, annotation, text as variable)
 
 ##### Day 4 (Sep 29): Functions
 
