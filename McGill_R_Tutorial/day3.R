@@ -174,6 +174,7 @@ ggplot(data=d, aes(x=Familiarity, y=RTlexdec, color=AgeSubject, size=LengthInLet
 # spread points: 	+ geom_jitter()
 # lines: 		+ geom_line()
 # violin plots: 	+ geom_violin()
+# density plots:	+ geom_density()
 # text plots:		+ geom_text()
 # etc.
 
@@ -195,6 +196,23 @@ ggplot(data=d, (aes(x=AgeSubject, y=RTlexdec))) + geom_jitter(color='brown', alp
 # tell you which plots make more/less sense.
 
 # Also, note that layers are built in the order you add them.
+
+
+############### Density plots
+
+ggplot(data=d, aes(x=RTlexdec)) + geom_density(fill="blue", color="blue", alpha=0.5) + geom_rug() 
+
+# You can flip your plot by adding + coord_flip():
+
+ggplot(data=d, aes(x=RTlexdec)) + geom_density(fill="blue", color="blue", alpha=0.5) + geom_rug() + coord_flip()
+
+# Whenever you want to know which arguments a geom_ takes:
+# type ? geom_...
+# Usually, google will be more useful, though.
+
+
+# This plots the density of RTlexdec and also adds a geom_rug(), so
+# you can see where the data points are more concentrated
 
 ############### Boxplots
 
