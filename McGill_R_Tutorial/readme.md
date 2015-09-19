@@ -2,6 +2,10 @@
 #### R Tutorial | Fall 2015
 ##### Guilherme D. Garcia
 
+---
+
+You can access the R scripts for each tutorial above. Day 3 also has an ```HTML``` version, so you can visualize the plots.
+
 ***Outline:***
 
 ---
@@ -31,7 +35,7 @@
 - Adding error bars
 - Formatting plots (fonts, spacing, colors, annotation, text as variable)
 
-This particular topic also has an ```html``` version, where you can visualize all the plots. Click [**here**](http://guilhermegarcia.github.io/resources/intro_to_r/intro_to_ggplot2.html).
+This particular topic also has an ```HTML``` version, where you can visualize all the plots. Click [**here**](http://guilhermegarcia.github.io/resources/intro_to_r/intro_to_ggplot2.html).
 
 ---
 
