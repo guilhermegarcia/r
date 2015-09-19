@@ -10,7 +10,7 @@
 # Data visualization
 
 # Today's topic is related to Exploratory Data Analysis (EDA),
-# which is usually the step that comes before the statistical analyses.
+# which is usually the step that comes before the statistical analysis.
 
 # We'll be using ggplot2, a widely used R package for plotting data.
 # Other packages are also quite useful: graphics, rCharts, lattice etc.
