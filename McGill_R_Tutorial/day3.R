@@ -133,7 +133,7 @@ qplot(Familiarity, RTlexdec, data=d, colour=AgeSubject)
 
 qplot(Familiarity, RTlexdec, data=d, colour=AgeSubject, size=LengthInLetters)
 
-qplot(Familiarity, RTlexdec, data=d, colour=AgeSubject, size=LengthInLetters, alpha=0.1)
+qplot(Familiarity, RTlexdec, data=d, colour=AgeSubject, size=LengthInLetters, alpha=I(0.1))
 
 qplot(Familiarity, RTlexdec, data=d, colour=AgeSubject, size=LengthInLetters, alpha=I(0.2), facets = Voice ~ Obstruent)
 
