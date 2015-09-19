@@ -277,7 +277,7 @@ ggplot(data=data, aes(x=AgeSubject, y=meanRT)) + geom_errorbar(width = 0.2, aes(
 
 ######################## BUT:
 
-# You don't need all this work, though:
+# YOU DON'T NEED TO DO IT MANUALLY:
 
 ourPlot = ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) 
 
