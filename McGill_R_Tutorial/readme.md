@@ -17,16 +17,12 @@ Welcome! This is an introductory tutorial on R. In this repository, you can acce
 - Subsetting
 - Data frames
 
----
-
 ##### Day 2 (Sep 15): Working with data
 
 - Loading (and exporting) your data (data frames, data tables)
 - Basic functions for exploring your data, renaming columns, subsetting, slice notation
 - Examining variables with cross-tabulation (and proportion tables) + very basic plotting with the graphics package
 - Summarizing your data with ```ddply()``` (Exploratory Data Analysis, EDA)
-
----
 
 ##### Day 3 (Sep 22): Visualizing data
 
@@ -36,8 +32,6 @@ Welcome! This is an introductory tutorial on R. In this repository, you can acce
 - Formatting plots (fonts, spacing, colors, annotation, text as variable)
 
 This particular topic also has an ```HTML``` version, where you can visualize all the plots. Click [**here**](http://guilhermegarcia.github.io/resources/intro_to_r/intro_to_ggplot2.html).
-
----
 
 ##### Day 4 (Sep 29): Functions
 
