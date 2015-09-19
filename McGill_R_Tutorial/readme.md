@@ -11,6 +11,8 @@
 - Subsetting
 - Data frames
 
+---
+
 ##### Day 2 (Sep 15): Working with data
 
 - Loading (and exporting) your data (data frames, data tables)
@@ -18,14 +20,14 @@
 - Examining variables with cross-tabulation (and proportion tables) + very basic plotting with the graphics package
 - Summarizing your data with ```ddply()``` (Exploratory Data Analysis, EDA)
 
+---
+
 ##### Day 3 (Sep 22): Visualizing data
 
 - Data visualization with ```ggplot()```
 - Different plotting functions: boxplots, scatter plots, bar plots, violin plots etc.
 - Adding error bars
 - Formatting plots (fonts, spacing, colors, annotation, text as variable)
-
----
 
 This particular topic also has an ```html``` version, where you can visualize all the plots. Click [**here**](http://guilhermegarcia.github.io/resources/intro_to_r/intro_to_ggplot2.html).
 
@@ -36,3 +38,5 @@ This particular topic also has an ```html``` version, where you can visualize al
 - Functions, loops and string manipulation
 - Regular expressions
 - Example: from segments to a CV template
+
+---
