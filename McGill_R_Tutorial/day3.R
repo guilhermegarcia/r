@@ -408,7 +408,7 @@ ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alp
 
 ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot(fill="lightblue") + geom_jitter(alpha=0.1) + ggtitle("My plot") + ylab("log(RT)") + xlab("Subject age") + theme_bw()
 
-# Colors are usually avoided, but sometimes hey can help a lot.
+# Colors are usually avoided, but sometimes they can help a lot.
 
 # IMPORTANT: 
 
