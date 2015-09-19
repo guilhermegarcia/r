@@ -310,6 +310,15 @@ ourPlot + stat_summary(fun.y = sd, geom = "point", position="dodge", size=4, sha
 
 ourPlot + stat_summary(fun.y = mean, geom = "point", position="dodge", size=4, shape=5)
 
+# To get a shape chart, visit: 
+# http://www.cookbook-r.com/Graphs/Shapes_and_line_types/
+
+# You can also simply use a letter (only ONE), but use "":
+
+ourPlot + stat_summary(fun.y = mean, geom = "point", position="dodge", size=4, shape="A")
+
+
+
 # ERROR BAR:
 
 ourPlot + stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width=0.1) 
