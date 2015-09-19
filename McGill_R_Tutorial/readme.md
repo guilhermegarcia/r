@@ -6,7 +6,7 @@
 
 You can access the R scripts for each tutorial above. Day 3 also has an ```HTML``` version, so you can visualize the plots.
 
-***Outline:***
+### Outline
 
 ---
 
