@@ -4,6 +4,8 @@
 
 ***Outline:***
 
+---
+
 ##### Day 1 (Sep 8): Fundamentals
 
 - R Basics
