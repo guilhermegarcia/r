@@ -152,6 +152,12 @@ ggplot(data=d, aes(x=Familiarity, y=RTlexdec, color=AgeSubject, size=LengthInLet
 
 ggplot(data=d, aes(x=Familiarity, y=RTlexdec, color=AgeSubject, size=LengthInLetters)) + geom_point(alpha=0.2) + facet_grid(Voice ~ Obstruent)
 
+
+# You don't actually need to explicitly say "data=", since R will figure d is corresponds to your data:
+
+ggplot(d, aes(x=Familiarity, y=RTlexdec, color=AgeSubject, size=LengthInLetters)) + geom_point(alpha=0.2) + facet_grid(Voice ~ Obstruent)
+
+
 # The titles in each facet will be inherited from the factor levels
 # So you can change them if you wish.
 
