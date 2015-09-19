@@ -313,7 +313,7 @@ ourPlot + stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width=0.1)
 
 ###### Text instead of points
 
-# Let's say you want to plot the actual words (of values of a var).
+# Let's say you want to plot the actual words (i.e., values of a var).
 # You also want to add a green (!) trend line.
 
 ggplot(data=d[d$LengthInLetters==3,], aes(x=Familiarity, y=RTlexdec)) + geom_text(aes(label=Word), alpha=0.5) + geom_smooth(color="green", size=2)
