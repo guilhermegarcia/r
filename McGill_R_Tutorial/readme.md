@@ -4,7 +4,7 @@
 
 ---
 
-Welcome. This is an introductory tutorial on R. In this repository, you can access the R scripts (```.R```) for each tutorial. Day 3 also has an ```HTML``` version, so you can visualize the plots.
+Welcome! This is an introductory tutorial on R. In this repository, you can access the R scripts (```.R```) for each tutorial. Day 3 also has an ```HTML``` version, so you can visualize the plots. If you have any questions, e-mail me at ```guilherme.garcia@mail.mcgill.ca```.
 
 ### Outline
 
