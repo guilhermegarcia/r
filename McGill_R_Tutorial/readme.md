@@ -40,3 +40,5 @@ This particular topic also has an ```HTML``` version, where you can visualize al
 - Example: from segments to a CV template
 
 ---
+
+*1085 Dr Penfield, Room 002, 3PM.*
