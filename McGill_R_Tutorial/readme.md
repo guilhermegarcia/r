@@ -21,7 +21,7 @@ Welcome! This is an introductory tutorial on R. In this repository, you can acce
 
 - Loading (and exporting) your data (data frames, data tables)
 - Basic functions for exploring your data, renaming columns, subsetting, slice notation
-- Examining variables with cross-tabulation (and proportion tables) + very basic plotting with the graphics package
+- Examining variables with cross-tabulation (and contingency tables) + very basic plotting with the graphics package
 - Summarizing your data with ```ddply()``` (Exploratory Data Analysis, EDA)
 
 ##### Day 3 (Sep 22): Visualizing data
