@@ -68,7 +68,6 @@ data = read.csv("file_name.csv")
 # Their syntax is a bit more intricate, but they're definitely better if you have a lot of data
 
 # In fact, you can calculate how much time it takes to read a file (or do perform any other task) in R. 
-# Let's test this loading the Buckeye Corpus:
 
 system.time(rnorm(10000000))
 
