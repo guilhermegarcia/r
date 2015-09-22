@@ -43,7 +43,3 @@ This particular topic also has an ```HTML``` version, where you can visualize al
 - Functions, loops and string manipulation
 - Regular expressions
 - Example: from segments to a CV template
-
----
-
-*1085 Dr Penfield, Room 002, 3PM.*
