@@ -4,7 +4,12 @@
 
 ---
 
-Welcome! This is an introductory tutorial on R. In this repository, you can access the R scripts (```.R```) for each tutorial. Day 3 also has an ```HTML``` version, so you can visualize the plots. If you have any questions, e-mail me at ```guilherme.garcia@mail.mcgill.ca```.
+Welcome! This is an introductory tutorial on R. In this repository, you can access all the R scripts (```.R```) used in class. Day 3 also has an ```HTML``` version, so you don't need to run the code to visualize the plots. If you have any questions, e-mail me at ```guilherme.garcia@mail.mcgill.ca```.
+
+- Dates: Sep 8, 15, 22 and 29 (Tuesdays)
+- Time: 3:00
+- Location: Department of Linguistics, 1085 Dr. Penfield
+- Room: 002
 
 ### Outline
 
