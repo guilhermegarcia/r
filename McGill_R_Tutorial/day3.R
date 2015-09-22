@@ -239,6 +239,27 @@ ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alp
 
 ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alpha=0.1) + facet_grid(~CV)
 
+###############
+
+# IMPORTANT: 
+
+# Boxplots are great *provided* that you have a relatively normal
+# distribution.
+
+# Otherwise, they may be very misleading (that's why 
+# geom_jitter() is useful). Let's simulate a bimodal distribution.
+
+x = rnorm(1000, mean=5, sd=0.5)
+y = rnorm(1000, mean=8, sd=0.5)
+z = data.frame(data=c(x,y), someFactor=gl(1, 2000, 2000, labels=c("Level")))
+
+head(z)
+
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="brown")
+
+
 
 ############### Barplots
 
