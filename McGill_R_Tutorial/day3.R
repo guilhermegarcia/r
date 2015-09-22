@@ -317,7 +317,7 @@ data[2,'SE'] = sem(d[d$AgeSubject == 'young',]$RTlexdec)
 
 data
 
-ggplot(data=data, aes(x=AgeSubject, y=meanRT)) + geom_errorbar(width = 0.2, aes(ymax = meanRT + SE, ymin = meanRT - SE)) + geom_bar(stat='identity', alpha=0.4)
+ggplot(data=data, aes(x=AgeSubject, y=meanRT)) + geom_errorbar(width = 0.2, aes(ymax = meanRT + SE, ymin = meanRT - SE)) + geom_bar(stat='identity', alpha=0.4, width=0.5)
 
 # You can see error bars are tiny here (note the y-axis scale)
 
