@@ -255,11 +255,22 @@ z = data.frame(data=c(x,y), someFactor=gl(1, 2000, 2000, labels=c("Level")))
 
 head(z)
 
+# These data are clearly bimodal if you look at the histogram
+# (let's assume you didn't know that beforehand).
+
 ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
 
-ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="brown")
+# But look what happens when you use a boxplot:
 
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5)
 
+# A good way to see that is the geom_jitter() function:
+
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+
+# Or simply use a violin plot, so you can see the actual densities.
+
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
 
 ############### Barplots
 
