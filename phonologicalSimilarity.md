@@ -23,10 +23,8 @@ The function is based on Portuguese (given the inventory below). Other languages
 
 You can change this, but the convention I'm using is as follows:    
 ```M``` a syllable-final nasal (engma)    
-```S``` sh as in *shape*    
-```Z``` the voiced version of ```S```    
 
-Overall, this is the same convention I use in the Portuguese Stress Corpus ([here](https://github.com/guilhermegarcia/portuguese_corpus/wiki/2.-Transcription)).
+Overall, this is the same convention I use in the Portuguese Stress Corpus (<a href="https://github.com/guilhermegarcia/portuguese_corpus/wiki/2.-Transcription", target="_blank"><b>here</b></a>).
 
 
 ```{r}
