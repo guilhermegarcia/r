@@ -6,7 +6,7 @@ phonological features of each segment in each of the two strings in question. Se
 
 ### Example
 
-```pSim("banana", "bana")``` will return ```0```, because the first 4 segments in both strings are identical regarding their
+```pSim("banana", "bana")``` will return **0**, because the first 4 segments in both strings are identical regarding their
 phonological features. If you are comparing words that differ in length, you may want to take that into account. In other words, you may not like the fact that ```banana``` and ```bana``` are considered to be identical feature-wise. For that reason, a third argument is also available.
 
 ### String similarity beyond features
