@@ -21,7 +21,7 @@ The function is based on Portuguese (given the inventory below). Other languages
 
 ### Features
 
-All segments are defined as basic variables (lists). This is advantageous in the following sense: let's say you want to check which features the segment ```p``` contains that ```t``` does not contain. To list such features, you'd only need to use the ```setdiff(p,t)```. Note that I did not use quotation marks, since the segments are **variables** in this script. This will list all features that are unique to ```p```.
+All segments are defined as basic variables (lists). This is advantageous because you can use **any** function available in ```R```. For example, set operations. Let's say you want to check which features the segment ```p``` contains that ```t``` does not contain. To list such features, you'd only need to use the ```setdiff(p,t)```. Note that I did not use quotation marks, since the segments are **variables** in this script. This will list all features that are unique to ```p```.
 
 ### Transcription (conventions)
 
