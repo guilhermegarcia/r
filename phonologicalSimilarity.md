@@ -17,6 +17,7 @@ A third argument, ```distance``` allows the user to take into account other stru
 
 Now, the score will be **0.25**. This final score is basically 50% based on the string distance metric (```lv```) and 50% based on phonological similarity between the two strings (you can obviously adjust these weights in the function). If no distance method is provided in the function, only features will be compared.
 
+The function is based on Portuguese (given the inventory below). Other languages can be easily added by adapting said inventory.
 
 
 ```{r}
@@ -26,6 +27,8 @@ Now, the score will be **0.25**. This final score is basically 50% based on the 
 pSim = function(word1,word2, distance="none"){
 
 # Distance options: "osa", "lv", "dl", "hamming", "lcs", "qgram", "cosine", "jaccard", "jw", "soundex"
+
+# First, let's define the inventory for Portuguese (with all features).
 
 p = list("−syllabic", "−stress", "−long", "+consonantal" ,"−sonorant", "−continuant", "−delayed release", "−approximant", "−tap","−trill", "−nasal", "−voice", "−spread gl", "−constr gl", "+labial", "−round", "−labiodental", "−coronal" ,"0anterior", "0distributed", "0strident", "−lateral", "−dorsal", "0high", "0low", "0front", "0back", "0tense")
 
