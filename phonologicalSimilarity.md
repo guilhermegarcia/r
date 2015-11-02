@@ -17,7 +17,16 @@ A third argument, ```distance``` allows the user to take into account other stru
 
 Now, the score will be **0.25**. This final score is basically 50% based on the string distance metric (```lv```) and 50% based on phonological similarity between the two strings (you can obviously adjust these weights in the function). If no distance method is provided in the function, only features will be compared.
 
-The function is based on Portuguese (given the inventory below). Other languages can be easily added by adapting said inventory.
+The function is based on Portuguese (given the inventory below). Other languages can be easily added by adapting said inventory. 
+
+### Transcription (conventions)
+
+You can change this, but the convention I'm using is as follows:    
+```M``` a syllable-final nasal (engma)    
+```S``` sh as in *shape*
+```Z``` the voiced version of ```S```    
+
+Overall, this is the same convention I use in the Portuguese Stress Corpus ([here](https://github.com/guilhermegarcia/portuguese_corpus/wiki/2.-Transcription)).
 
 
 ```{r}
