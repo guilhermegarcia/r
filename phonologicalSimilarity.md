@@ -7,7 +7,15 @@ phonological features of each segment in each of the two strings in question. Se
 ### Example
 
 ```pSim("banana", "bana")``` will return ```0```, because the first 4 segments in both strings are identical regarding their
-phonological features.
+phonological features. If you are comparing words that differ in length, you may want to take that into account. In other words, you may not like the fact that ```banana``` and ```bana``` are considered to be identical feature-wise. For that reason, a third argument is also available.
+
+### String similarity beyond features
+
+A third argument, ```distance``` allows the user to take into account other structural differences between the inputs (check the package [```stringdist```](https://cran.r-project.org/web/packages/stringdist/stringdist.pdf) for more information). A very common method is the **Levenshtain distance** (*Minimal number of insertions, deletions and replacements needed for transforming string a into string b*):    
+
+```pSim("banana", "bana", distance="lv")```   
+
+Now, the score will be **0.25**. This final score is basically 50% based on the string distance metric (```lv```) and 50% based on phonological similarity between the two strings (you can obviously adjust these weights in the function). If no distance method is provided in the function, only features will be compared.
 
 
 
