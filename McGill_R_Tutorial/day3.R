@@ -239,6 +239,13 @@ ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alp
 
 ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alpha=0.1) + facet_grid(~CV)
 
+<<<<<<< HEAD
+=======
+###############
+
+# IMPORTANT: 
+
+>>>>>>> origin/master
 # Boxplots are great *provided* that you have a relatively normal
 # distribution.
 
@@ -267,7 +274,10 @@ ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) +
 # Or simply use a violin plot, so you can see the actual densities.
 
 ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
 ############### Barplots
 
@@ -314,7 +324,7 @@ data[2,'SE'] = sem(d[d$AgeSubject == 'young',]$RTlexdec)
 
 data
 
-ggplot(data=data, aes(x=AgeSubject, y=meanRT)) + geom_errorbar(width = 0.2, aes(ymax = meanRT + SE, ymin = meanRT - SE)) + geom_bar(stat='identity', alpha=0.4)
+ggplot(data=data, aes(x=AgeSubject, y=meanRT)) + geom_errorbar(width = 0.2, aes(ymax = meanRT + SE, ymin = meanRT - SE)) + geom_bar(stat='identity', alpha=0.4, width=0.5)
 
 # You can see error bars are tiny here (note the y-axis scale)
 
