@@ -1,0 +1,122 @@
+library(ggplot2)#
+library(languageR)#
+library(plyr)#
+library(scales) # for % in plots
+data(english)
+d = english#
+#
+# This dataset has a lot of columns, so let's first create a #
+# more concise version (we'll overwrite d).#
+#
+names(d)#
+#
+columns = c("RTlexdec", "Familiarity", "Word", "AgeSubject", "LengthInLetters", "CV", "Obstruent", "Voice")#
+#
+d = d[,columns]
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot(width=0.4, size=1) + geom_jitter(alpha=0.1) + ggtitle("My plot\n") + ylab("log(RT)\n") + xlab("Subject age\n") + theme_bw()
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot(width=0.4, size=1) + geom_jitter(alpha=0.1, size=1) + ggtitle("My plot\n") + ylab("log(RT)\n") + xlab("Subject age\n") + theme_bw()
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot(width=0.4, size=1) + geom_jitter(alpha=0.1, size=1, width=1) + ggtitle("My plot\n") + ylab("log(RT)\n") + xlab("Subject age\n") + theme_bw()
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot(width=0.4, size=1) + geom_jitter(alpha=0.1, size=1) + ggtitle("My plot\n") + ylab("log(RT)\n") + xlab("Subject age\n") + theme_bw()
+library(ggplot2)#
+library(languageR)#
+library(plyr)#
+library(scales) # for % in plots#
+#
+data(english)#
+#
+# Let's use a very short name for our data this time#
+#
+d = english#
+#
+# This dataset has a lot of columns, so let's first create a #
+# more concise version (we'll overwrite d).#
+#
+names(d)#
+#
+columns = c("RTlexdec", "Familiarity", "Word", "AgeSubject", "LengthInLetters", "CV", "Obstruent", "Voice")#
+#
+d = d[,columns]#
+#
+head(d)#
+#
+# This looks good for plotting.
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot()
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter()
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alpha=0.1)
+ggplot(data=d, aes(x=AgeSubject, y=RTlexdec)) + geom_boxplot() + geom_jitter(alpha=0.1) + facet_grid(~CV)
+x = rnorm(1000, mean=5, sd=1)
+y = rnorm(1000, mean=8, sd=1)
+z = c(x,y)
+hist(z, breaks=50)
+x = rnorm(1000, mean=5, sd=0.5)#
+y = rnorm(1000, mean=8, sd=0.5)#
+z = c(x,y)#
+hist(z, breaks=50)
+z = data.frame(c(x,y))
+head(z)
+z = data.frame(data=c(x,y))
+head(z)
+ggplot(data=z, aes(x=data)) + geom_histogram()
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.1)
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.2)
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+ggplot(data=z, aes(x=data)) + geom_boxplot()
+ggplot(data=z, aes(y=data)) + geom_boxplot()
+ggplot(data=z, aes(y=data, x=NULL)) + geom_boxplot()
+ggplot(data=z, aes(y=data, x=data)) + geom_boxplot()
+z = data.frame(data=c(x,y), someFactor=rep("level", 2000))
+head(z)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot()
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter()
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=-.3)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.3)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.2)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.2, size=5)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.2, size=2)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.2, size=3)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="red")
+z = data.frame(data=c(x,y), someFactor=gl(3, 2000/3, length=2000, labels=c("level1", "level2", "level3")))
+head(z)
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="red")
+z = data.frame(data=c(x,y), someFactor=gl(2, 2000/2, length=2000, labels=c("mean=5", "mean=8")))
+head(z)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="red")
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="red")
+z = data.frame(data=c(x,y), someFactor=gl(1, 2000, 2000, labels=c("Level")))
+head(z)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="red")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="green")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="yellow")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="brown")
+library(ggplot2)
+x = rnorm(1000, mean=5, sd=0.5)#
+y = rnorm(1000, mean=8, sd=0.5)#
+z = data.frame(data=c(x,y), someFactor=gl(1, 2000, 2000, labels=c("Level")))#
+#
+head(z)#
+#
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot() + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(size=1) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3) + geom_jitter(alpha=0.1, size=3, color="brown")
+median(z)
+median(z$data)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
+ggplot(data=z, aes(x=data)) + geom_histogram(binwidth=0.05)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5)
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_boxplot(width=0.3, alpha=0.5) + geom_jitter(alpha=0.1, size=3, color="brown")
+ggplot(data=z, aes(y=data, x=someFactor)) + geom_violin(width=0.3, alpha=0.5)
+library(plyr)#
+library(data.table)#
+library(languageR)

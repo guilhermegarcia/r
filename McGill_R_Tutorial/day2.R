@@ -63,6 +63,10 @@ data = read.csv("file_name.txt", sep = "\t")
 
 data = read.csv("file_name.csv")
 
+corpus = read.csv("~/Desktop/buckeye_corpus.csv")
+
+
+
 
 # Even though we'll use data frames most of the time, *data tables* are WAY better (and faster). 
 # Their syntax is a bit more intricate, but they're definitely better if you have a lot of data
@@ -74,7 +78,18 @@ system.time(rnorm(10000000))
 
 # So it takes 8s (in my laptop) for R to generate 10 million numbers (which are normally distributed)
 
-path = "path_to_file_here"
+path = "http://guilhermegarcia.github.io/resources/english/buckeye_corpus.csv"
+
+path
+
+corpus = read.csv(path)
+
+tail(corpus)
+
+
+
+
+
 
 system.time(read.csv(path))
 
