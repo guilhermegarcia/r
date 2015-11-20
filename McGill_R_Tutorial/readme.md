@@ -36,7 +36,7 @@ Welcome! This was an introductory tutorial on R organized by me in September 201
 - Adding error bars
 - Formatting plots (fonts, spacing, colors, annotation, text as variable)
 
-This particular topic also has an ```HTML``` version, where you can visualize all the plots. Click <a href="https://www.dropbox.com/s/gh2syc1nvcr0o4x/intro_to_ggplot2.html?dl=0", target="_blank">**here**</a>.
+This particular topic also has an ```HTML``` version, where you can visualize all the plots. Click <a href="https://www.dropbox.com/s/gh2syc1nvcr0o4x/intro_to_ggplot2.html?raw=1", target="_blank">**here**</a>.
 
 ##### Day 4 (Sep 29): Functions
 
