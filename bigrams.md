@@ -10,12 +10,7 @@ biGram = function(x, corpus){
 
 words = corpus
 
-# A given word x
-
-# x = 'cavidade'
-
-
-# Split version
+# Splitting input
 
 x1 = strsplit(x, split="")[[1]]
 
