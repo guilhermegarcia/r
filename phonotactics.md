@@ -6,7 +6,7 @@ Segments are sorted in decreasing order of frequency.
 
 ### How to use it
 
-The script is based on the Portuguese Stress Corpus (Garcia 2014, which will be available here soon). 
+The script is based on the Portuguese Stress Corpus. 
 However, you can use any corpus and simply adapt the script. The Portuguese corpus in question contains a column for
 pronunciation which uses a SAMPA-like transcription. The input of ```seg()``` necessarily needs to conform to whichever
 transcription system you have in your own corpus.
