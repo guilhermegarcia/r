@@ -1,6 +1,6 @@
 # Bigram probability for segments
 
-The function below, ```biGram()```, calculates the bigram probability for any given word based on a given corpus. The output is logarithmic sum of the individual probabilities for each segmental bigram. The function requires two arguments, namely, a word (```x```) and a corpus/list of words.
+The function below, ```biGram()```, calculates the bigram probability for any given word based on a given corpus. The output is logarithmic sum of the individual probabilities for each segmental bigram. The function requires two arguments, namely, a word (```x```) and a corpus/list of words. 
 
 
 ```{r}
@@ -45,7 +45,4 @@ for(bigram in bigrams){
 return(sum(log(probs)))
 
 }
-
-
-
 ```
