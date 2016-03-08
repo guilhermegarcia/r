@@ -1,6 +1,8 @@
 # Pseudo randomization
 
-This function (```rand()```).
+This function (```rand()```) pseudo randomizes a data frame taking into account a particular factor of interest. For example, let's say you want to randomize all rows in the data frame but you do not want to have too long sequences of items that happen to have the same level of a factor you're interested in. That's the purpose of ```rand()```.
+
+The function takes three arguments: a data frame ```d```, a variable ```v``` and an optional cut-off point ```n``` (default = ```3```). The function then randomizes the data frame and checks if there's any sequence of ```n``` instances of any level of ```v``` in the randomized version of the data frame. If there is, another randomization is performed until ```n``` is never observed. Given that this is a ```while``` loop, the function stops after a number of iterations (set to ```10000``` here). If that's the case, an error is printed. Naturally, depending of the number of levels of ```v```, the number of rows of ```d``` and ```n```, no randomization will satisfy the cut-off point.
 
 
 ```{r}
