@@ -12,7 +12,7 @@ words = corpus
 
 # Splitting input
 
-x1 = strsplit(x, split="")[[1]]
+x1 = strsplit(as.character(x), split="")[[1]]
 
 # Storing bigrams
 
