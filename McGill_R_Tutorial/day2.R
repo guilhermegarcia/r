@@ -63,7 +63,7 @@ data = read.csv("file_name.txt", sep = "\t")
 
 data = read.csv("file_name.csv")
 
-corpus = read.csv("~/Desktop/buckeye_corpus.csv")
+corpus = read.csv("")
 
 
 
@@ -77,7 +77,7 @@ system.time(rnorm(10000000))
 
 # So it takes 8s (in my laptop) for R to generate 10 million numbers (which are normally distributed)
 
-path = "http://guilhermegarcia.github.io/resources/english/buckeye_corpus.csv"
+path = "some_corpus.csv"
 
 path
 
