@@ -412,11 +412,13 @@ head(new)
 
 # Give Bob the interesting text 
 
+# library(plyr) # if not loaded yet
+
 summ1 = ddply(new,. (realization), summarise, meanLength = mean(lengthTheme))
 
 summ1
 
-
+# dplyr is actually better, but let's use plyr for now
 # Ok, you could in principle get both means manually:
 
 mean(new[new$realization == "NP",]$lengthTheme)
