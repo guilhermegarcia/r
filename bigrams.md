@@ -42,7 +42,7 @@ for(bigram in bigrams){
 	probs[length(probs)+1] = length(grep(bigram, words)) / length(grep(strsplit(bigram, split="")[[1]][1], words))
 }
 
-return(sum(log(probs)))
+return(log(prod(probs)))
 
 }
 ```
