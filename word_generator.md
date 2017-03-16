@@ -1,7 +1,6 @@
 # Word generator
 
-*Guilherme D. Garcia (McGill)*  
-<a href="http://www.guilherme.ca", target="_blank">guilherme.ca</a>
+*Guilherme D. Garcia (McGill)*
 
 **[Latest update: Dec 10th]:** Type ```citeScript()``` for citation information. **[Dec 9th 2014]:** The scrip now has one more function: ```plotVowels()```. This allows you to plot the vowel distribution in the sample generated with ```word()```. **[Dec 8th 2014]:** now, I've added a vector with sequences of segments you do not want to see in the outcome. I had mentioned you could add rules/restrictions, so this is an important example. Now, **all** generated words are well-formed. In addition, an extra argument is included in the function, ```n```, which is basically the approximate number of words you want.
 
