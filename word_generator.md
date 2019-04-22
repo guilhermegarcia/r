@@ -1,6 +1,6 @@
 # Word generator
 
-*Guilherme D. Garcia (McGill)*
+*Guilherme D. Garcia (Ball State University)*
 
 **[Latest update: Dec 10th]:** Type ```citeScript()``` for citation information.    
 **[Dec 9th 2014]:** The scrip now has one more function: ```plotVowels()```. This allows you to plot the vowel distribution in the sample generated with ```word()```.    
