@@ -1,5 +1,7 @@
 ## Phonological similarity
 
+*Guilherme D. Garcia (Ball State University)*
+
 This script contains a function that compares two strings and returns a similarity score. The score takes into account the
 phonological features of each segment in each of the two strings in question. Segment ```i``` in ```string1``` is compared to segment
 ```i``` in ```string2``` and so forth (until the last segment of the shortest string is reached).
