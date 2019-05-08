@@ -36,10 +36,6 @@ Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV word
 
 ### How to use this script
 
-Download script [here](http://guilhermegarcia.github.io/resources/scripts/word_generator.R).
-
-**OR** simply run it via ```source('http://guilhermegarcia.github.io/resources/scripts/word_generator.R')```
-
 -----
 
 ```{R}
