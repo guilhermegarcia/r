@@ -40,140 +40,144 @@ Therefore, ```word(O,V,O,V,O,V,O,V, n=100)``` will generate 100 CV.CV.CV.CV word
 
 ```{R}
 
-# Copyright (c) 2014 Guilherme Duarte Garcia
-
-#################################################################### Enjoy.
-
 require(scales)
-require(ggplot2)
+require(tidyverse)
 
 cat('\n\n\nCopyright (c) 2014 Guilherme Duarte Garcia \n\nword(...,n) generates n *unique* words. 
-Note that n is approximate, and will depend on your input. 
-You can also plot the vowel distribution using plotVowels().
-The script contains inventories for Portuguese.
-You can change the parameters to generate words in other languages.
-\nTypes of arguments: 
-\nO -> singleton onset \nOO -> complex onset \nV -> monophthong \nVV -> diphthong 
-C -> coda \n\nBy default, there are no complex codas.
-Simply edit the empty vector (CC) in the script.
-\nReference: O,V,C,O,V,O,V = CVC.CV.CV 
-\nExample: 
-\ntest <- word(O,V,C,n=80) # This will generate approx. 80 CVC words
-plotVowels(test) # This will plot the vowel distribution in the sample
-
-\nFor more information, type readMore() or visit:
-\nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n
-To cite this script, type  citeScript().\n\n\n')
+    Note that n is approximate, and will depend on your input. 
+    You can also plot the vowel distribution using plotVowels().
+    The script contains inventories for Portuguese.
+    You can change the parameters to generate words in other languages.
+    \nTypes of arguments: 
+    \nO -> singleton onset \nOO -> complex onset \nV -> monophthong \nVV -> diphthong 
+    C -> coda \n\nBy default, there are no complex codas.
+    Simply edit the empty vector (CC) in the script.
+    \nReference: O,V,C,O,V,O,V = CVC.CV.CV 
+    \nExample: 
+    \ntest <- word(O,V,C,n=80) # This will generate approx. 80 CVC words
+    plotVowels(test) # This will plot the vowel distribution in the sample
+    
+    \nFor more information, type readMore() or visit:
+    \nhttps://github.com/guilhermegarcia/r/blob/master/word_generator.md \n
+    To cite this script, type  citeScript().\n\n\n')
 
 
 
 
 word = function(...,n){
-
-
-
-## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
-
-# Nuclei in the language
-
-assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
-
-
-# Falling diphthongs
-
-assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'ou', 'Eu', 'Ou', 'iu'), envir = .GlobalEnv)
-
-# Add any other parameter you'd like
-
-# Onsets (singleton and complex)
-
-
-assign("O", c('b', 'c', 'ç', 'd', 'f', 'g', 'gu', 'j', 'l', 'lh', 'nh', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
-
-assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'tl', 'vl', 'vr'), envir = .GlobalEnv)
-
-# Other possible onsets should be added
-
-# Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
-
-out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj', 'aa', 'ee', 'ii', 'oo', 'uu')
-
-# Codas (positionally neutral assumptions here)
-
-assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
-
-# assign("CC", c(), envir = .GlobalEnv) # Add complex codas here
-
-##############################################################
-
-# Now, the function per se, which basically uses loopings and samplings
-
-args = list(...)    # creates a list with the arguments
-
-if(length(args)==0){stop('You need a valid input.')}
-if(missing(n)){stop('You forgot the (approx.) number of words: n = ?')}
-
-temp =  list()      # empty list for storing samples of segments
-words = list()      # empty list for storing random words
-
-for(j in 1:(n*1.5)){    # this loop generates n words (here, n=100)
-for(i in 1:length(args)){
-
-    temp[[i]] = sample(args[[i]],1)
+  
+  
+  
+  ## First, let's define the parameters we're interested in (i.e., the inventory of *graphemes*)
+  
+  # Nuclei in the language
+  
+  assign("V", c('a', 'e', 'i', 'o', 'u'), envir = .GlobalEnv)
+  
+  
+  # Falling diphthongs
+  
+  assign("VV", c('ai', 'ei', 'oi', 'ui', 'Ei', 'Oi', 'au', 'eu', 'ou', 'Eu', 'Ou', 'iu'), envir = .GlobalEnv)
+  
+  # Add any other parameter you'd like
+  
+  # Onsets (singleton and complex)
+  
+  
+  assign("O", c('b', 'c', 'd', 'f', 'g', 'gu', 'j', 'l', 'm', 'n', 'p', 'qu', 'r', 's', 't', 'v', 'z'), envir = .GlobalEnv)
+  
+  assign("OO", c('cr', 'cl', 'dr', 'br', 'bl', 'fr', 'fl', 'gr', 'gl', 'pr', 'pl', 'tr', 'vr'), envir = .GlobalEnv)
+  
+  # Other possible onsets should be added
+  
+  # Sequences not allowed (a vector with sequences you don't want)---this uses regular expressions
+  
+  out = c('quu', '^lh', '^nh', 'guu', 'quo', 'guo', 'll', 'mm', 'nn', 'mn', 'nm', 'sz', 'ç[ei]', '^ç', 'md', 'mk', 'mt', 'mg', 'np', 'nb', 'mf', 'mv', 'ms', 'mz', 'mc', 'mqu', 'mr', 'mç', 'ml', 'sj', 'lr', 'mj', '[bcçdfgjlmnpqrstvz]lh', '[bcçdfgjlmnpqrstvz]nh', 'sr', 'lj', 'aa', 'ee', 'ii', 'oo', 'uu')
+  
+  # Codas (positionally neutral assumptions here)
+  
+  assign("C", c('n', 'm', 'l', 's', 'r'), envir = .GlobalEnv)
+  
+  # assign("CC", c(), envir = .GlobalEnv) # Add complex codas here
+  
+  ##############################################################
+  
+  # Now, the function per se, which basically uses loopings and samplings
+  
+  args = list(...)    # creates a list with the arguments
+  
+  if(length(args)==0){stop('You need a valid input.')}
+  if(missing(n)){stop('You forgot the (approx.) number of words: n = ?')}
+  
+  temp =  list()      # empty list for storing samples of segments
+  words = list()      # empty list for storing random words
+  
+  for(j in 1:(n*1.5)){    # this loop generates n words (here, n=100)
+    for(i in 1:length(args)){
+      
+      temp[[i]] = sample(args[[i]],1)
     }
-
-word = paste(temp, sep = '', collapse = '')
-
-words[j] = c(word)
-
-}
-
-badWords = c()
-
-for(i in 1:length(out)){
+    
+    word = paste(temp, sep = '', collapse = '')
+    
+    words[j] = c(word)
+    
+  }
+  
+  badWords = c()
+  
+  for(i in 1:length(out)){
     badWords[[length(badWords)+1]] <- words[grep(out[i],words)]
-}
-
-badWords = unlist(badWords)
-
-finalList = words[!words %in% badWords]
-
-
-return(unique(unlist(finalList)))
-
-
-
+  }
+  
+  badWords = unlist(badWords)
+  
+  finalList = words[!words %in% badWords]
+  
+  
+  return(unique(unlist(finalList)))
+  
+  
+  
 }
 
 
 # This will plot the vowel distribution of the corpus generated with word() above.
 
 plotVowels = function(x){
-	
-	if(missing(x)){stop('Your input needs to be a corpus generated via word()')}
-	if(class(x)!='character'){stop('Wrong input.')}
-	assign("syllabic", c('a','e','i','o','u'), envir = .GlobalEnv)
-	
-	temp = strsplit(x,'')
-	temp = unlist(temp)
-	temp = tolower(temp)
-	allVowels = list()
-	
-	
-	for(i in 1:length(temp)){
-		if(temp[i] %in% syllabic){
-			allVowels[[length(allVowels)+1]] <- c(temp[i])
-		}
-	}
-	
-	allVowels = data.frame(table(unlist(allVowels)))
-	names(allVowels) <- c('Vowel', 'Frequency')
-	allVowels$Proportion <- allVowels$Frequency / sum(allVowels$Frequency)
-	
-	distribution = ggplot(data=allVowels, aes(x=Vowel, y=Proportion)) + geom_histogram(stat='identity', fill='white', color='black') + ylab(NULL) + xlab('Vowel') + theme_bw() + ggtitle('Distribution of vowels') + theme(text=element_text(size=20)) + scale_y_continuous(labels=percent)
-	
-	return(distribution)
-	
+  
+  if(missing(x)){stop('Your input needs to be a corpus generated via word()')}
+  if(class(x)!='character'){stop('Wrong input.')}
+  assign("syllabic", c('a','e','i','o','u'), envir = .GlobalEnv)
+  
+  temp = strsplit(x,'')
+  temp = unlist(temp)
+  temp = tolower(temp)
+  allVowels = list()
+  
+  
+  for(i in 1:length(temp)){
+    if(temp[i] %in% syllabic){
+      allVowels[[length(allVowels)+1]] <- c(temp[i])
+    }
+  }
+  
+  allVowels = data.frame(table(unlist(allVowels)))
+  names(allVowels) <- c('Vowel', 'Frequency')
+  allVowels$Proportion <- allVowels$Frequency / sum(allVowels$Frequency)
+  
+  distribution = ggplot(data = allVowels, aes(x = Vowel, y = Proportion)) + 
+      geom_bar(stat = 'identity', 
+                     fill = 'white', 
+                     color = 'black', 
+                     alpha = 0) + 
+      ylab(NULL) + xlab('Vowel') + 
+      theme_bw() + ggtitle('Distribution of vowels') + 
+      # theme(text=element_text(size=20)) + 
+      scale_y_continuous(labels = percent)
+  
+  return(distribution)
+  
 }
 
 
@@ -181,21 +185,18 @@ plotVowels = function(x){
 # For more information, type readMore() to visit the website
 
 readMore = function(){
-    browseURL("https://github.com/guilhermegarcia/r/blob/master/word_generator.md")
-    }
-    
-    
-
-citeScript = function(){
-	
-	cat('\nAPA:
-\nGarcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/guilhermegarcia/r/blob/master/word_generator.md
-\nABNT:
-\nGARCIA, Guilherme D. Word Generator: an R script for generating pseudo-random words. GitHub repository disponível em https://github.com/guilhermegarcia/r/blob/master/word_generator.md, 2014.\n\n')
+  browseURL("https://github.com/guilhermegarcia/r/blob/master/word_generator.md")
 }
 
 
 
+citeScript = function(){
+  
+  cat('\nAPA:
+      \nGarcia, G. D. (2014). Word Generator: an R script for generating pseudo-random words. GitHub repository available at https://github.com/guilhermegarcia/r/blob/master/word_generator.md
+      \nABNT:
+      \nGARCIA, Guilherme D. Word Generator: an R script for generating pseudo-random words. GitHub repository disponível em https://github.com/guilhermegarcia/r/blob/master/word_generator.md, 2014.\n\n')
+}
 ```
 
 ----
