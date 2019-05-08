@@ -28,7 +28,7 @@ All segments are defined as basic variables (lists). This is advantageous becaus
 You can change this, but the convention I'm using is as follows:    
 ```M``` a syllable-final nasal (engma)    
 
-Overall, this is the same convention I use in the Portuguese Stress Corpus (<a href="https://github.com/guilhermegarcia/portuguese_corpus/wiki/2.-Transcription", target="_blank"><b>here</b></a>).
+Overall, this is the same convention I use in the Portuguese Stress Lexicon (<a href="https://guilhermegarcia.github.io/psl.html", target="_blank"><b>here</b></a>).
 
 
 ```{r}
