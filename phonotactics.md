@@ -1,6 +1,6 @@
 # Phonotactic distribution
 
-*Guilherme D. Garcia (Ball State University)*
+*Guilherme D. Garcia*
 
 Assume you have a string of segments ```str``` in a given language. This script contains a function ```seg()``` that takes
 ```str``` as its only argument and returns a data frame with the segments that follow ```str``` in the language in question.
